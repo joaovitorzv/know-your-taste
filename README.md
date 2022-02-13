@@ -1,7 +1,7 @@
-## know your taste
+# know your taste
 
 // todo
 
 ## License
 
-![MIT](LICENSE)
+[MIT](LICENSE)
