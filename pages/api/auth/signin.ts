@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { get, del, auth } from "@upstash/redis";
 
 type AuthParams = NextApiRequest & {
   query: {
