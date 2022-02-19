@@ -1,7 +1,7 @@
 import { signIn } from "next-auth/react";
 
 type Props = {
-  callbackError: string;
+  callbackError?: string;
 };
 
 const SigninBtn = ({ callbackError }: Props) => {

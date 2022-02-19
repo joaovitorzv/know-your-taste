@@ -9,9 +9,6 @@
     "test": "jest",
     "test:watch": "jest -w --passWithNoTests"
   },
-  "engines": {
-    "node": ">=14.2.0"
-  },
   "dependencies": {
     "@types/uuid": "^8.3.4",
     "@upstash/redis": "^0.2.1",

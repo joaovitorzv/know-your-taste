@@ -11,6 +11,7 @@ const scopes = ["user-read-email", "playlist-read-private"];
 const scopes_param = scopes.join("%20");
 
 async function refreshToken(token: JWT): Promise<JWT> {
+  console.log("refreshToken() called");
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
@@ -43,7 +44,7 @@ async function refreshToken(token: JWT): Promise<JWT> {
 }
 
 export default NextAuth({
-  secret: process.env.SECRET_HASH,
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID as string,
@@ -53,6 +54,7 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, account }) {
+      console.log("jwt called");
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
@@ -72,7 +74,8 @@ export default NextAuth({
     },
   },
   pages: {
-    signIn: "http://localhost:3000/api/auth/sigin",
+    signIn: "/api/auth/signin",
+    error: "api/auth/error",
   },
   debug: true,
 });

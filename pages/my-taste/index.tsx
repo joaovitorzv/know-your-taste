@@ -2,14 +2,14 @@ import styles from "@/styles/Home.module.css";
 import SignoutBtn from "components/SignoutBtn/signoutBtn";
 import type { GetServerSideProps, NextPage } from "next";
 import { getSession, signIn } from "next-auth/react";
-import { ERROR } from "./api/auth/[...nextauth]";
+import { ERROR } from "../api/auth/[...nextauth]";
 
 type Props = {
   data: any;
 };
 
-const Dashboard: NextPage<Props> = ({ data }) => {
-  console.log(data);
+const MyTaste: NextPage<Props> = ({ data }) => {
+  console.log("deite ", data);
 
   return (
     <div className={styles.container}>
@@ -22,17 +22,9 @@ const Dashboard: NextPage<Props> = ({ data }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        statusCode: 302,
-      },
-    };
-  }
-  if (session.error === ERROR.REFRESH_TOKEN) signIn("spotify");
+  if (session?.error === ERROR.REFRESH_TOKEN) signIn("spotify");
 
-  const request = await fetch(`${process.env.APP_BASE_URI}/api/dashboard`, {
+  const request = await fetch(`${process.env.APP_BASE_URI}/api/my-taste`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -48,4 +40,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default Dashboard;
+export default MyTaste;
