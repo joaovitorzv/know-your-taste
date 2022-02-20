@@ -1,47 +1,33 @@
 import styles from "@/styles/Home.module.css";
+import Header from "components/Header/header";
 import SigninBtn from "components/SigninBtn/signinBtn";
-import type { GetServerSideProps, NextPage } from "next";
-import { getSession } from "next-auth/react";
+import useUser from "hooks/useUser";
+import type { NextPage } from "next";
+import { Session } from "next-auth";
+import { getSession, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 type Props = {
   params?: {
     callbackError: string;
   };
-  user?: string;
+  session: Session;
 };
 
-const Home: NextPage<Props> = ({ params, user }) => {
+const Home: NextPage<Props> = () => {
+  const { query: params } = useRouter();
+  const user = useSession();
+
   return (
     <div className={styles.container}>
-      {user && <span>logged in as {user}</span>}
+      <Header />
       <hr />
       <Link href="/my-taste">know my taste</Link>{" "}
       <h1>Something wonderful is coming!</h1>
-      {!user && <SigninBtn callbackError={params?.callbackError} />}
+      {user.status !== "authenticated" && <SigninBtn params={params} />}
     </div>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const params = context.query;
-  const session = await getSession({ req: context.req });
-
-  if (!session) {
-    return {
-      props: {
-        params,
-      },
-    };
-  }
-  console.log(session);
-
-  return {
-    props: {
-      params,
-      user: session?.user?.name,
-    },
-  };
 };
 
 export default Home;

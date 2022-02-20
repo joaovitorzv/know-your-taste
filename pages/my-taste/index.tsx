@@ -1,4 +1,5 @@
 import styles from "@/styles/Home.module.css";
+import Header from "components/Header/header";
 import SignoutBtn from "components/SignoutBtn/signoutBtn";
 import type { GetServerSideProps, NextPage } from "next";
 import { getSession, signIn } from "next-auth/react";
@@ -9,10 +10,9 @@ type Props = {
 };
 
 const MyTaste: NextPage<Props> = ({ data }) => {
-  console.log("deite ", data);
-
   return (
     <div className={styles.container}>
+      <Header />
       <p>hello</p>
 
       <SignoutBtn />

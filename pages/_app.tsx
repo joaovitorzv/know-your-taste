@@ -1,11 +1,19 @@
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
+import { SWRConfig } from "swr";
+
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <SWRConfig
+        value={{
+          fetcher: (url) => fetch(url).then((res) => res.json()),
+        }}
+      >
+        <Component {...pageProps} />
+      </SWRConfig>
     </SessionProvider>
   );
 }

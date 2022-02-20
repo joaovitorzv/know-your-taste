@@ -11,7 +11,6 @@ const scopes = ["user-read-email", "playlist-read-private"];
 const scopes_param = scopes.join("%20");
 
 async function refreshToken(token: JWT): Promise<JWT> {
-  console.log("refreshToken() called");
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
@@ -28,7 +27,6 @@ async function refreshToken(token: JWT): Promise<JWT> {
   const data: RefreshTokenResponse = await response.json();
 
   if (response.ok) {
-    console.log("token was refreshed");
     return {
       accessToken: data.access_token,
       expiresAt: Date.now() + data.expires_in * 1000,
@@ -54,7 +52,6 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token, account }) {
-      console.log("jwt called");
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;

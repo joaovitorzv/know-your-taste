@@ -1,13 +1,14 @@
 import { signIn } from "next-auth/react";
+import { ParsedUrlQuery } from "querystring";
 
 type Props = {
-  callbackError?: string;
+  params: ParsedUrlQuery;
 };
 
-const SigninBtn = ({ callbackError }: Props) => {
+const SigninBtn = ({ params }: Props) => {
   return (
     <div>
-      {callbackError ? (
+      {params.callbackError ? (
         <p>Couldn&apos;t authenticate your spotify account, try again.</p>
       ) : null}
       <button onClick={() => signIn("spotify")}>login with spotify</button>
