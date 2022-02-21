@@ -1,14 +1,9 @@
 import { JWT } from "next-auth/jwt";
 import NextAuth from "next-auth/next";
 import SpotifyProvider from "next-auth/providers/spotify";
-import { RefreshTokenResponse } from "types/next-auth";
+import { AUTH_ERROR, RefreshTokenResponse } from "../../../types/next-auth.d";
 
-export enum ERROR {
-  REFRESH_TOKEN = "refresh_token_error",
-}
-
-const scopes = ["user-read-email", "playlist-read-private"];
-const scopes_param = scopes.join("%20");
+const scopes_param = ["user-read-email", "playlist-read-private"].join("%20");
 
 async function refreshToken(token: JWT): Promise<JWT> {
   const response = await fetch("https://accounts.spotify.com/api/token", {
@@ -27,9 +22,10 @@ async function refreshToken(token: JWT): Promise<JWT> {
   const data: RefreshTokenResponse = await response.json();
 
   if (response.ok) {
+    console.log(data.expires_in);
     return {
       accessToken: data.access_token,
-      expiresAt: Date.now() + data.expires_in * 1000,
+      expiresAt: Date.now() + 3600 * 1000, // expires in 1 hour
       refreshToken: token.refreshToken,
       error: null,
     };
@@ -37,7 +33,7 @@ async function refreshToken(token: JWT): Promise<JWT> {
 
   return {
     ...token,
-    error: ERROR.REFRESH_TOKEN,
+    error: AUTH_ERROR.REFRESH_TOKEN,
   };
 }
 
@@ -55,7 +51,7 @@ export default NextAuth({
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
-        token.expiresAt = Date.now() + account.expires_at! * 1000;
+        token.expiresAt = Date.now() + 3600 * 1000; // expires in 1 hour
       }
 
       if (Date.now() > token.expiresAt) {
@@ -74,5 +70,5 @@ export default NextAuth({
     signIn: "/api/auth/signin",
     error: "api/auth/error",
   },
-  debug: false,
+  debug: true,
 });
