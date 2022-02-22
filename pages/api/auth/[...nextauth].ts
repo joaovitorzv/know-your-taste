@@ -22,11 +22,10 @@ async function refreshToken(token: JWT): Promise<JWT> {
   const data: RefreshTokenResponse = await response.json();
 
   if (response.ok) {
-    console.log(data.expires_in);
     return {
+      ...token,
       accessToken: data.access_token,
       expiresAt: Date.now() + 3600 * 1000, // expires in 1 hour
-      refreshToken: token.refreshToken,
       error: null,
     };
   }
@@ -55,7 +54,7 @@ export default NextAuth({
       }
 
       if (Date.now() > token.expiresAt) {
-        return refreshToken(token);
+        return await refreshToken(token);
       }
 
       return token;

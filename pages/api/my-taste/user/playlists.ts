@@ -8,7 +8,7 @@ export default async function handler(
   const session = await getSession({ req: req });
 
   try {
-    if (!session?.accessToken) throw session;
+    if (!session) throw session;
 
     const response = await fetch("https://api.spotify.com/v1/me/playlists", {
       method: "GET",

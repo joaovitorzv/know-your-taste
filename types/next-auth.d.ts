@@ -24,3 +24,7 @@ export interface RefreshTokenResponse {
   scope: string;
   expires_in: number;
 }
+
+export enum AUTH_ERROR {
+  REFRESH_TOKEN = "refresh_token_error",
+}

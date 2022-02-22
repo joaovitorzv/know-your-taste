@@ -11,7 +11,13 @@ const SigninBtn = ({ params }: Props) => {
       {params.callbackError ? (
         <p>Couldn&apos;t authenticate your spotify account, try again.</p>
       ) : null}
-      <button onClick={() => signIn("spotify")}>login with spotify</button>
+      <button
+        onClick={() =>
+          signIn("spotify", { callbackUrl: "http://localhost:3000/my-taste" })
+        }
+      >
+        login with spotify
+      </button>
     </div>
   );
 };
