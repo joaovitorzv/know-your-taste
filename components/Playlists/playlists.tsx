@@ -1,28 +1,19 @@
 import next from "next";
 import { useState } from "react";
 import useSWR from "swr";
+import Playlist from "./playlist";
+import type { UserPlaylists } from "./myPlaylists";
+import type { DiscoverPlaylists } from "./discoverPlaylists";
 
 interface PlaylistsResponse {
-  items: UserPlaylists[];
+  items: UserPlaylists[] | DiscoverPlaylists[]; // Generic here?
   next: string;
   limit: number;
   offset: number;
   total: number;
 }
 
-interface UserPlaylists {
-  id: string;
-  name: string;
-  image: {
-    source: string;
-    height: number;
-    width: number;
-  };
-  public: boolean;
-  description: string;
-}
-
-const MyPlaylists = () => {
+const Playlists = ({}) => {
   const [loadNext, setLoadNext] = useState(false);
   const { data, error, isValidating } = useSWR<PlaylistsResponse>(
     `/api/my-taste/user/playlists?next=${next}`
@@ -35,13 +26,14 @@ const MyPlaylists = () => {
     <section>
       <h3>My {data?.total} Playlists</h3>
       <div style={{ width: "300px" }}>
-        {data.items.map((playlist) => (
-          <div key={playlist.id} style={{ display: "inline-flex" }}>
-            <h4>{playlist.name}</h4>
-            <p>{playlist.description}</p>
-            <span>{playlist.public ? "public" : "private"}</span>
-            <button>Delete playlist</button>
-          </div>
+        {data.items.map((p) => (
+          <Playlist
+            key={p.id}
+            name={p.name}
+            description={p.description}
+            isPublic={p.public}
+            action={() => {}}
+          />
         ))}
       </div>
       <div>
@@ -51,4 +43,4 @@ const MyPlaylists = () => {
   );
 };
 
-export default MyPlaylists;
+export default Playlists;
