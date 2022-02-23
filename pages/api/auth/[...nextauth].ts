@@ -3,7 +3,11 @@ import NextAuth from "next-auth/next";
 import SpotifyProvider from "next-auth/providers/spotify";
 import { AUTH_ERROR, RefreshTokenResponse } from "../../../types/next-auth.d";
 
-const scopes_param = ["user-read-email", "playlist-read-private"].join("%20");
+const scopes_param = [
+  "user-read-email",
+  "playlist-read-private",
+  "user-top-read",
+].join("%20");
 
 async function refreshToken(token: JWT): Promise<JWT> {
   const response = await fetch("https://accounts.spotify.com/api/token", {
