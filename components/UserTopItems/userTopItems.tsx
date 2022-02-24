@@ -1,27 +1,22 @@
-import useSWR from "swr";
+import { useTopItems } from "hooks/swr/useTopItems";
 
 interface Props {
-  type: "tracks" | "artists";
+  type: "topArtists" | "topTracks";
 }
 
-interface UserTopItemsResponse {
-  items: {
-    name: string;
-    images: { height: number; width: number; url: string }[];
-  }[];
-}
+const favorite = {
+  topArtists: "artists",
+  topTracks: "tracks",
+};
 
 const UserTopItems = ({ type }: Props) => {
-  const { data, error } = useSWR<UserTopItemsResponse>(
-    `/api/user/top?type=${type}`
-  );
+  const { data, isLoading } = useTopItems(type);
 
-  if (!data && !error) return <p>loading...</p>;
-  if (error) return <p>something bad happened.</p>;
+  if (isLoading) return <p>loading...</p>;
 
   return (
     <section>
-      <h2>Favorite {type}</h2>
+      <h2>Favorite {favorite[type]}</h2>
       <div>
         <ol>
           {data?.items.map((artist: any) => (

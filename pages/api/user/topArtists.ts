@@ -11,7 +11,7 @@ export default async function handler(
     if (!session) throw session;
 
     const response = await fetch(
-      `https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=1`,
+      `https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5`,
       {
         method: "GET",
         headers: {
@@ -21,7 +21,7 @@ export default async function handler(
     );
     const data = await response.json();
 
-    res.status(200).json({ topGenre: data.items[0].genres });
+    res.status(200).json(data);
   } catch (e) {
     res.status(401).end();
   }

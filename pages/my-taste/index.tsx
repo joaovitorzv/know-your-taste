@@ -1,11 +1,11 @@
 import styles from "@/styles/Home.module.css";
+import Discover from "components/Discover/discover";
 import MyPlaylists from "components/Playlists/myPlaylists";
 import UserTopItems from "components/UserTopItems/userTopItems";
-import { useTopGenre } from "hooks/swr/useTopGenre";
+import { useTopItems } from "hooks/swr/useTopItems";
 import type { NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import { useEffect } from "react";
-import useSWR from "swr";
 import Header from "../../components/Header/header";
 import SignoutBtn from "../../components/SignoutBtn/signoutBtn";
 import { AUTH_ERROR } from "../../types/next-auth.d";
@@ -21,26 +21,31 @@ const MyTaste: NextPage<Props> = () => {
       signIn("spotify", { callbackUrl: "http://localhost:3000/my-taste" });
   }, [session]);
 
-  const { data, isLoading } = useTopGenre();
-  console.log(data);
+  const { data } = useTopItems("topArtists");
 
   return (
     <div className={styles.container}>
       <Header />
       <p>hello</p>
-      {isLoading ? (
+      {!data ? (
         <p>loading genre...</p>
       ) : (
         <h2>
           {session.data?.user?.name} You really like to listen{" "}
-          {data?.topGenre[0]}
+          {data?.items[0].genres[0]}
         </h2>
       )}
-      <UserTopItems type="artists" />
-      <UserTopItems type="tracks" />
+
+      <div style={{ display: "flex" }}>
+        <UserTopItems type="topArtists" />
+        <UserTopItems type="topTracks" />
+      </div>
       <SignoutBtn />
       <hr />
-      <MyPlaylists />
+      <div style={{ display: "flex" }}>
+        <Discover />
+        <MyPlaylists />
+      </div>
     </div>
   );
 };
