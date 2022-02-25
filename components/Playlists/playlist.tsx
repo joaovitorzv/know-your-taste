@@ -9,7 +9,7 @@ const Playlist = ({
 }: Omit<UserPlaylists, "id">) => {
   return (
     <div style={{ display: "inline-flex" }}>
-      <h4>{name}</h4>
+      <h5>{name}</h5>
       <p>{description}</p>
       <span>{isPublic ? "public" : "private"}</span>
       <button onClick={() => {}}>Delete playlist</button>
