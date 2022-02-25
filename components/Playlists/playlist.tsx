@@ -7,45 +7,44 @@ const Playlist = ({
   isPublic,
   description,
   name,
-  image,
   mutate,
 }: UserPlaylists) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const renameInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+    if (isModalOpen && renameInput.current) {
+      renameInput.current.focus();
     }
-  }, [isOpen]);
+  }, [isModalOpen]);
 
   const [formError, setFormError] = useState<string | boolean>(false);
   const [formLoading, setFormLoading] = useState(false);
-  const [playlistName, setPlaylistName] = useState<string | null>(null);
+  const [renameInputValue, setRenameInputValue] = useState<string | null>(null);
+
   const handlePlaylistRename = async (e: FormEvent<HTMLFormElement>) => {
     setFormLoading(true);
     e.preventDefault();
-    if (!playlistName || playlistName.length <= 0) {
+
+    if (!renameInputValue || renameInputValue.length <= 0) {
       setFormError("Your playlist name can't be empty.");
       return;
     }
 
-    const requestBody = {
-      name: playlistName,
-    };
+    const requestBody = { name: renameInputValue };
 
     try {
-      const response = await fetch(`/api/user/playlists?id=${id}`, {
+      const renameResponse = await fetch(`/api/user/playlists?id=${id}`, {
         method: "POST",
         body: JSON.stringify(requestBody),
       });
 
-      const data = await response.json();
-      if (data) {
+      const sucessRename = await renameResponse.json();
+      if (sucessRename) {
         mutate();
         setFormLoading(false);
-        setIsOpen(false);
+        setIsModalOpen(false);
       }
     } catch (e) {
       setFormError("An error ocurred.");
@@ -58,19 +57,22 @@ const Playlist = ({
         <h5>{name}</h5>
         <p>{description}</p>
         <span>{isPublic ? "public" : "private"}</span>
-        <button onClick={() => setIsOpen(true)}>Rename</button>
+        <button onClick={() => setIsModalOpen(true)}>Rename</button>
       </div>
-      <Modal toggle={() => setIsOpen((prev) => !prev)} isOpen={isOpen}>
+      <Modal
+        toggle={() => setIsModalOpen((prev) => !prev)}
+        isOpen={isModalOpen}
+      >
         <h5>{name}</h5>
         <p>{description}</p>
         <form onSubmit={(e) => handlePlaylistRename(e)}>
           {formError && <p style={{ color: "red" }}>{formError}</p>}
           <input
-            ref={inputRef}
+            ref={renameInput}
             placeholder="new name"
-            onChange={(e) => setPlaylistName(e.target.value)}
+            onChange={(e) => setRenameInputValue(e.target.value)}
           />
-          <button onClick={() => setIsOpen(false)}>cancel</button>
+          <button onClick={() => setIsModalOpen(false)}>cancel</button>
           <button type="submit">{formLoading ? "loading..." : "save"}</button>
         </form>
       </Modal>

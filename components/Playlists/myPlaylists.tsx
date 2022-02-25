@@ -15,8 +15,8 @@ export interface UserPlaylists {
   getKey: SWRInfiniteKeyLoader;
   mutate: KeyedMutator<PlaylistsResponse[]>;
 }
-// 'public' is a reserved word in strict mode.
-// but in spotify response is return a 'public' field
+// 'public' is a reserved word in strict mode
+// but in spotify request returns a 'public' field
 interface UserPlaylistsResponse extends Omit<UserPlaylists, "isPublic"> {
   public: boolean;
 }
