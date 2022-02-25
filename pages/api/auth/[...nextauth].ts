@@ -7,6 +7,8 @@ const scopes_param = [
   "user-read-email",
   "playlist-read-private",
   "user-top-read",
+  "playlist-modify-public",
+  "playlist-modify-private",
 ].join("%20");
 
 async function refreshToken(token: JWT): Promise<JWT> {
