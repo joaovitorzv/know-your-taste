@@ -37,8 +37,6 @@ const MyTaste: NextPage<Props> = () => {
     );
   }
 
-  console.log(artistsChartData);
-
   return (
     <div className={styles.container}>
       <Header />
