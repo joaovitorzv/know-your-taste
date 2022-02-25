@@ -1,0 +1,20 @@
+.wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0, 0.4);
+  padding: 250px 500px;
+  color: white;
+}
+
+.container {
+  padding: 10px;
+  background-color: black;
+}
+
+.container > header {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,3 +1,4 @@
+import { KeyedMutator } from "swr";
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
 import Playlist from "./playlist";
 
@@ -11,10 +12,17 @@ export interface UserPlaylists {
   };
   isPublic: boolean;
   description: string;
+  getKey: SWRInfiniteKeyLoader;
+  mutate: KeyedMutator<PlaylistsResponse[]>;
+}
+// 'public' is a reserved word in strict mode.
+// but in spotify response is return a 'public' field
+interface UserPlaylistsResponse extends Omit<UserPlaylists, "isPublic"> {
+  public: boolean;
 }
 
 interface PlaylistsResponse {
-  items: UserPlaylists[];
+  items: UserPlaylistsResponse[];
   next: string;
   limit: number;
   offset: number;
@@ -31,7 +39,7 @@ const getKey: SWRInfiniteKeyLoader = (pageIndex, prevData) => {
 };
 
 const MyPlaylists = () => {
-  const { data, error, setSize, size } =
+  const { data, error, setSize, size, mutate } =
     useSWRInfinite<PlaylistsResponse>(getKey);
 
   const isLoading = !data && !error;
@@ -54,10 +62,13 @@ const MyPlaylists = () => {
             page.items.map((playlist) => (
               <Playlist
                 key={playlist.id}
+                id={playlist.id}
                 name={playlist.name}
                 description={playlist.description}
-                isPublic={playlist.isPublic}
+                isPublic={playlist.public}
                 image={playlist.image}
+                getKey={getKey}
+                mutate={mutate}
               />
             ))
           )}

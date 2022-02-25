@@ -50,19 +50,23 @@ const MyTaste: NextPage<Props> = () => {
         </h2>
       )}
       <div style={{ display: "flex" }}>
-        <BarChart
-          layout="vertical"
-          width={600}
-          height={300}
-          data={artistsChartData}
-          margin={{ left: 30 }}
-        >
-          <YAxis type="category" dataKey="name" />
-          <XAxis type="number" dataKey="popularity" />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          <Bar barSize={20} dataKey="popularity" fill="#363636" />
-        </BarChart>
+        {artistsChartData ? (
+          <BarChart
+            layout="vertical"
+            width={600}
+            height={300}
+            data={artistsChartData}
+            margin={{ left: 30 }}
+          >
+            <YAxis type="category" dataKey="name" />
+            <XAxis type="number" dataKey="popularity" />
+            <CartesianGrid strokeDasharray="3 3" />
+            <Tooltip />
+            <Bar barSize={20} dataKey="popularity" fill="#363636" />
+          </BarChart>
+        ) : (
+          <p>loading chart...</p>
+        )}
         <UserTopItems type="topArtists" />
         <UserTopItems type="topTracks" />
       </div>

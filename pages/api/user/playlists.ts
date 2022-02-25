@@ -7,6 +7,26 @@ export default async function handler(
 ) {
   const session = await getSession({ req: req });
 
+  if (req.method === "POST") {
+    try {
+      if (!session) throw session;
+      const { id } = req.query;
+
+      await fetch(`https://api.spotify.com/v1/playlists/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.accessToken}`,
+        },
+        body: req.body,
+      });
+
+      res.status(204);
+    } catch (e) {
+      res.status(403).end();
+    }
+  }
+
   try {
     if (!session) throw session;
 
