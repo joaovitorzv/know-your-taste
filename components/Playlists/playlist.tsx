@@ -12,7 +12,7 @@ const Playlist = ({
       <h5>{name}</h5>
       <p>{description}</p>
       <span>{isPublic ? "public" : "private"}</span>
-      <button onClick={() => {}}>Delete playlist</button>
+      <button onClick={() => {}}>Rename</button>
     </div>
   );
 };
