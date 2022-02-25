@@ -27,7 +27,13 @@ const Discover = () => {
   const { data, error } = useSWR<DiscoverResponse>(
     artists
       ? `/api/discover?seed_genres=${seed_genres}&seed_artists=${seed_artists}&seed_tracks=${seed_tracks}` // takes all genres string from top artist
-      : null
+      : null,
+    null,
+    {
+      revalidateOnMount: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
   );
 
   if (!data && !error) return <p>loading...</p>;

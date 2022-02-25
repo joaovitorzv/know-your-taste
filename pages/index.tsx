@@ -16,7 +16,7 @@ type Props = {
 
 const Home: NextPage<Props> = () => {
   const { query: params } = useRouter();
-  const session = useSession();
+  const user = useSession();
 
   return (
     <div className={styles.container}>
@@ -24,7 +24,7 @@ const Home: NextPage<Props> = () => {
       <hr />
       <Link href="/my-taste">know my taste</Link>{" "}
       <h1>Something wonderful is coming!</h1>
-      {session.status !== "authenticated" && <SigninBtn params={params} />}
+      {user.status !== "authenticated" && <SigninBtn params={params} />}
     </div>
   );
 };
