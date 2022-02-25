@@ -55,7 +55,7 @@ const MyTaste: NextPage<Props> = () => {
           width={600}
           height={300}
           data={artistsChartData}
-          margin={{ top: 0, right: 0, left: 30, bottom: 0 }}
+          margin={{ left: 30 }}
         >
           <YAxis type="category" dataKey="name" />
           <XAxis type="number" dataKey="popularity" />
