@@ -37,7 +37,6 @@ const Discover = () => {
       revalidateOnReconnect: false,
     }
   );
-  console.log(data);
 
   if (!data && !error) return <p>loading...</p>;
   if (error) return <p>something bad happened.</p>;
