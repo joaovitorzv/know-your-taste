@@ -5,10 +5,13 @@ import Playlist from "./playlist";
 export interface UserPlaylists {
   id: string;
   name: string;
-  image: {
-    source: string;
+  images: {
+    url: string;
     height: number;
     width: number;
+  }[];
+  owner: {
+    display_name: string;
   };
   isPublic: boolean;
   description: string;
@@ -66,7 +69,8 @@ const MyPlaylists = () => {
                 name={playlist.name}
                 description={playlist.description}
                 isPublic={playlist.public}
-                image={playlist.image}
+                owner={playlist.owner}
+                images={playlist.images}
                 getKey={getKey}
                 mutate={mutate}
               />

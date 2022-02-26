@@ -1,4 +1,5 @@
 import Modal from "components/Modal/modal";
+import { useSession } from "next-auth/react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import type { UserPlaylists } from "./myPlaylists";
 
@@ -8,9 +9,18 @@ const Playlist = ({
   description,
   name,
   mutate,
+  images,
+  owner,
 }: UserPlaylists) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const session = useSession();
+  const [isOwner, setIsOwner] = useState(false);
 
+  useEffect(() => {
+    if (session.data && session.data.user?.name === owner.display_name)
+      setIsOwner(true);
+  }, [owner, session]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const renameInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -54,10 +64,18 @@ const Playlist = ({
   return (
     <>
       <div style={{ display: "inline-flex" }}>
+        <img
+          src={images[0].url}
+          height={70}
+          width={70}
+          alt={`${name}\'s cover`}
+        />
         <h5>{name}</h5>
         <p>{description}</p>
         <span>{isPublic ? "public" : "private"}</span>
-        <button onClick={() => setIsModalOpen(true)}>Rename</button>
+        {isOwner && (
+          <button onClick={() => setIsModalOpen(true)}>Rename</button>
+        )}
       </div>
       <Modal
         toggle={() => setIsModalOpen((prev) => !prev)}

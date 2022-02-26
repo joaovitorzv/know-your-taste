@@ -1,10 +1,9 @@
 import List from "components/List/list";
 import { useTopItems } from "hooks/swr/useTopItems";
-
 import useSWR from "swr";
 
 interface DiscoverResponse {
-  tracks?: {
+  tracks: {
     id: string;
     name: string;
     explicit: boolean;
