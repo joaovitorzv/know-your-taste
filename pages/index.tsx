@@ -17,7 +17,6 @@ type Props = {
 const Home: NextPage<Props> = () => {
   const { query: params } = useRouter();
   const user = useSession();
-
   return (
     <div className={styles.container}>
       <Header />

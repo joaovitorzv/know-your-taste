@@ -9,6 +9,9 @@ interface DiscoverResponse {
     name: string;
     explicit: boolean;
     preview_url: string;
+    external_urls: {
+      spotify: string;
+    };
     artists: {
       name: string;
       id: string;
@@ -35,6 +38,7 @@ const Discover = () => {
       revalidateOnReconnect: false,
     }
   );
+  console.log(data);
 
   if (!data && !error) return <p>loading...</p>;
   if (error) return <p>something bad happened.</p>;
@@ -48,6 +52,7 @@ const Discover = () => {
             name={track.name}
             explicit={track.explicit}
             preview_url={track.preview_url}
+            external_urls={track.external_urls}
             artists={track.artists}
           />
         ))}

@@ -8,8 +8,7 @@ interface UserTopTracksResponse {
     genres: string[];
   }[];
 }
-
-interface UserTopArtistsResponse {
+interface UserTopTracksResponse {
   items: {
     id: string;
     name: string;
