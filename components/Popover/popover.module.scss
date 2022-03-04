@@ -1,0 +1,40 @@
+.container {
+  position: relative;
+}
+
+.hover {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  display: flex;
+  flex-direction: row-reverse;
+  cursor: help;
+}
+
+.icon > svg {
+  fill: var(--primary-semidark);
+}
+
+.hover:hover > .over {
+  display: initial;
+}
+
+.over {
+  background-color: rgb(0, 0, 0, 0.6);
+  border-radius: var(--rd-m);
+  backdrop-filter: blur(4px);
+  position: relative;
+  width: 250px;
+  padding: 10px;
+  display: none;
+}
+
+.over span {
+  color: var(--secondary-light);
+  font-weight: bold;
+}
+
+.over p {
+  color: var(--secondary-semilight);
+  margin-top: 0.5em;
+}

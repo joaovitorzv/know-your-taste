@@ -1,6 +1,8 @@
+import Button from "components/Button";
 import { KeyedMutator } from "swr";
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
-import Playlist from "./playlist";
+import Playlist from "./Playlist/playlist";
+import playlists from "./playlists.module.scss";
 
 export interface UserPlaylists {
   id: string;
@@ -51,16 +53,19 @@ const MyPlaylists = () => {
   const isEmpty = data?.length === 0;
   const isTheEnd = isEmpty || (data && data[data.length - 1].next === null);
 
+  // TODO: Fetching states
   if (isLoading) return <p>loading...</p>;
   if (error) return <p>something bad happened!</p>;
 
   return (
-    <section>
-      <h3>My Playlists</h3>
+    <div className={playlists.container}>
+      <header>
+        <h2>My Playlists</h2>
+      </header>
       {isEmpty ? (
         <p>you haven&apos;t created any playlist yet.</p>
       ) : (
-        <div style={{ width: "400px" }}>
+        <div>
           {data?.map((page) =>
             page.items.map((playlist) => (
               <Playlist
@@ -78,16 +83,16 @@ const MyPlaylists = () => {
           )}
         </div>
       )}
-      <div>
-        <button disabled={isTheEnd} onClick={() => setSize((prev) => prev + 1)}>
+      <div className={playlists.load}>
+        <Button disabled={isTheEnd} onClick={() => setSize((prev) => prev + 1)}>
           {isLoadingMore
-            ? "loadding more..."
+            ? "loading more..."
             : isTheEnd
             ? "no more playlists"
             : "show more"}
-        </button>
+        </Button>
       </div>
-    </section>
+    </div>
   );
 };
 

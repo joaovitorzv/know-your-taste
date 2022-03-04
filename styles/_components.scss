@@ -1,0 +1,7 @@
+@import "./breakpoints";
+
+@mixin header-text {
+  font-size: var(--font-header-l-size);
+  color: var(--secondary-main);
+  margin-bottom: 0.5em;
+}

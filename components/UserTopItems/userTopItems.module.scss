@@ -1,0 +1,27 @@
+@import "../../styles/components";
+
+.container {
+  width: 100%;
+}
+
+.container header h2 {
+  @include header-text;
+}
+
+.list {
+  list-style-position: inside;
+  color: var(--primary-dark);
+  font-size: var(--font-paragraph-m-size);
+}
+
+.list li {
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+}
+
+.list li::marker {
+  color: var(--secondary-semilight);
+  font-size: var(--font-header-l-size);
+  font-weight: var(--font-header-weight);
+}

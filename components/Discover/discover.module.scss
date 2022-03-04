@@ -1,0 +1,9 @@
+@import "../../styles/components";
+
+.container {
+  width: 48%;
+}
+
+.container header h2 {
+  @include header-text;
+}

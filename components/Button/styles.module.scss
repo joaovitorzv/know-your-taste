@@ -1,0 +1,17 @@
+.btn {
+  min-height: 35px;
+  padding: 0 var(--spacer-l);
+
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  color: var(--primary-semilight);
+  background-color: var(--secondary-main);
+
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: var(--secondary-semidark);
+  }
+}

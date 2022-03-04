@@ -1,7 +1,13 @@
+import Button from "components/Button";
 import Modal from "components/Modal/modal";
 import { useSession } from "next-auth/react";
 import { FormEvent, useEffect, useRef, useState } from "react";
+import * as Card from "../../Card";
 import type { UserPlaylists } from "./myPlaylists";
+
+import { MdLock as PrivateIcon, MdPublic as PublicIcon } from "react-icons/md";
+
+import playlist from "./playlist.module.scss";
 
 const Playlist = ({
   id,
@@ -62,21 +68,32 @@ const Playlist = ({
   };
 
   return (
-    <>
-      <div style={{ display: "inline-flex" }}>
-        <img
-          src={images[0].url}
-          height={70}
-          width={70}
-          alt={`${name}\'s cover`}
-        />
-        <h5>{name}</h5>
-        <p>{description}</p>
-        <span>{isPublic ? "public" : "private"}</span>
-        {isOwner && (
-          <button onClick={() => setIsModalOpen(true)}>Rename</button>
-        )}
-      </div>
+    <div className={playlist.container}>
+      <Card.Card>
+        <Card.Image>
+          <img src={images[0].url} alt={`${name}\'s cover`} />
+        </Card.Image>
+
+        <Card.Content>
+          <div className={playlist.info}>
+            <h5>{name}</h5>
+            <p>{description}</p>
+            <span>
+              made by {owner.display_name}
+              {isPublic ? (
+                <PublicIcon title="public" />
+              ) : (
+                <PrivateIcon title="private" />
+              )}
+            </span>
+          </div>
+          <div>
+            {isOwner && (
+              <Button onClick={() => setIsModalOpen(true)}>Rename</Button>
+            )}
+          </div>
+        </Card.Content>
+      </Card.Card>
       <Modal
         toggle={() => setIsModalOpen((prev) => !prev)}
         isOpen={isModalOpen}
@@ -94,7 +111,7 @@ const Playlist = ({
           <button type="submit">{formLoading ? "loading..." : "save"}</button>
         </form>
       </Modal>
-    </>
+    </div>
   );
 };
 

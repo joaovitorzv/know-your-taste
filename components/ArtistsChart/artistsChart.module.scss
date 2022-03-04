@@ -1,0 +1,19 @@
+@import "../../styles/components";
+@import "../../styles/breakpoints";
+
+.container {
+  width: 48%;
+
+  @media only screen and (max-width: $lg) {
+    width: 100%;
+  }
+}
+
+.container header h2 {
+  @include header-text;
+}
+
+.chart {
+  height: 250px;
+  width: 100%;
+}

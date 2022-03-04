@@ -1,0 +1,29 @@
+.container:not(:first-child) {
+  margin-top: var(--spacer-m);
+}
+
+.info h5 {
+  margin-bottom: var(--spacer-xs);
+  font-size: var(--font-header-m-size);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.info p {
+  margin-bottom: var(--spacer-s);
+  font-size: var(--font-paragraph-s-size);
+}
+
+.info span {
+  display: flex;
+  align-items: flex-end;
+
+  color: var(--primary-semidark);
+}
+
+.info svg {
+  fill: var(--secondary-semidark);
+  margin-left: var(--spacer-s);
+}

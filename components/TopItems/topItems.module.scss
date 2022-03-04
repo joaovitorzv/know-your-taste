@@ -1,0 +1,10 @@
+@import "../../styles/breakpoints";
+
+.topItems {
+  display: flex;
+  width: 48%;
+
+  @media only screen and (max-width: $lg) {
+    width: 100%;
+  }
+}

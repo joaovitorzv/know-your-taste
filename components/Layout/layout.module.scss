@@ -1,0 +1,33 @@
+@import "../../styles/breakpoints";
+
+.container main {
+  padding: 0 2em;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (max-width: $lg) {
+    max-width: 998px;
+  }
+}
+
+.topItems {
+  display: flex;
+  width: 48%;
+
+  @media only screen and (max-width: $lg) {
+    width: 100%;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+
+  @media only screen and (max-width: $lg) {
+    flex-direction: column;
+  }
+
+  &:not(:first-child) {
+    margin-top: 2em;
+  }
+}

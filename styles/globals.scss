@@ -1,0 +1,57 @@
+:root {
+  --primary-light: #eefef1;
+  --primary-semilight: #cdfedf;
+  --primary-main: #acfcd9;
+  --primary-semidark: #56b59e;
+  --primary-dark: #217875;
+
+  --secondary-light: #fee8e0;
+  --secondary-semilight: #feaaa2;
+  --secondary-main: #fc6471;
+  --secondary-semidark: #b53255;
+  --secondary-dark: #781340;
+
+  --success: #acd858;
+  --info: #7a85fd;
+  --warning: #fdcb5d;
+  --darnger: #fdcb5d;
+
+  --font-header-family: "League Spartan", sans-serif;
+  --font-header-weight: 600;
+
+  --font-header-xl-size: 36px;
+  --font-header-l-size: 28px;
+  --font-header-m-size: 20px;
+
+  --font-paragraph-l-family: "League Spartan", sans-serif;
+  --font-paragraph-l-size: 24px;
+  --font-paragraph-m-size: 18px;
+  --font-paragraph-s-size: 16px;
+
+  --rd-m: 8px;
+
+  --spacer-xs: 4px;
+  --spacer-s: 8px;
+  --spacer-m: 16px;
+  --spacer-l: 24px;
+  --spacer-xl: 32px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-header-family);
+  color: var(--primary-dark);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
