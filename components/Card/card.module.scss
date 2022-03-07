@@ -1,11 +1,13 @@
 .container {
-  border-radius: var(--rd-m);
   overflow: hidden;
 
+  width: 100%;
+  height: 100px;
   display: flex;
-  background-color: var(--primary-light);
 
+  background-color: var(--primary-light);
   border: 3px solid var(--primary-dark);
+  border-radius: var(--rd-m);
 }
 
 .content {

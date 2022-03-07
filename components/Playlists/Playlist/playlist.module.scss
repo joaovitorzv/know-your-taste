@@ -14,16 +14,21 @@
 .info p {
   margin-bottom: var(--spacer-s);
   font-size: var(--font-paragraph-s-size);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .info span {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 
   color: var(--primary-semidark);
 }
 
 .info svg {
   fill: var(--secondary-semidark);
-  margin-left: var(--spacer-s);
+  margin-right: var(--spacer-s);
 }

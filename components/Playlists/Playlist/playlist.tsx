@@ -79,12 +79,12 @@ const Playlist = ({
             <h5>{name}</h5>
             <p>{description}</p>
             <span>
-              made by {owner.display_name}
               {isPublic ? (
                 <PublicIcon title="public" />
               ) : (
                 <PrivateIcon title="private" />
               )}
+              made by {owner.display_name}
             </span>
           </div>
           <div>

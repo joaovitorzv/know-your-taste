@@ -1,3 +1,5 @@
+@import "../../styles/breakpoints";
+
 .btn {
   min-height: 35px;
   padding: 0 var(--spacer-l);
@@ -8,10 +10,16 @@
   color: var(--primary-semilight);
   background-color: var(--secondary-main);
 
+  font-size: var(--font-button-sm);
   font-weight: 600;
   text-transform: uppercase;
 
   &:hover {
     background-color: var(--secondary-semidark);
+  }
+
+  @media only screen and (max-width: $sm) {
+    font-size: var(--font-button-sm);
+    padding: 0 var(--spacer-m);
   }
 }
