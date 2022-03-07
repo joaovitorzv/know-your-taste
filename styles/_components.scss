@@ -5,3 +5,9 @@
   color: var(--secondary-main);
   margin-bottom: 0.5em;
 }
+
+@mixin clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

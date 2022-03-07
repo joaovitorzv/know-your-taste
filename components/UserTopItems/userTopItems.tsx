@@ -6,8 +6,8 @@ interface Props {
 }
 
 const favorite = {
-  topArtists: "artists",
-  topTracks: "tracks",
+  topArtists: "artistas",
+  topTracks: "músicas",
 };
 
 const UserTopItems = ({ type }: Props) => {
@@ -18,7 +18,7 @@ const UserTopItems = ({ type }: Props) => {
   return (
     <section className={styles.container}>
       <header>
-        <h2>Favorite {favorite[type]}</h2>
+        <h2>Top {favorite[type]}</h2>
       </header>
       <ol className={styles.list}>
         {data?.items.map((artist: any) => (

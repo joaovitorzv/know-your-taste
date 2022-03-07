@@ -3,7 +3,6 @@ import { useTopItems } from "hooks/swr/useTopItems";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
-import styles from "./discover.module.css";
 import discover from "./discover.module.scss";
 
 interface DiscoverResponse {
@@ -53,9 +52,9 @@ const Discover = () => {
   if (!data && !error) return <p>loading...</p>;
   if (error) return <p>something bad happened.</p>;
   return (
-    <div className={`${styles.discover}, ${discover.container}`}>
+    <div className={`${discover.container}`}>
       <header>
-        <h2>Discover new stuff</h2>
+        <h2>Descubra coisas novas</h2>
       </header>
       <div>
         {data?.tracks?.map((track) => (

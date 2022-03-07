@@ -60,10 +60,10 @@ const MyPlaylists = () => {
   return (
     <div className={playlists.container}>
       <header>
-        <h2>My Playlists</h2>
+        <h2>Minhas Playlists</h2>
       </header>
       {isEmpty ? (
-        <p>you haven&apos;t created any playlist yet.</p>
+        <p>você não criou nenhuma playlist ainda.</p>
       ) : (
         <div>
           {data?.map((page) =>
@@ -86,10 +86,10 @@ const MyPlaylists = () => {
       <div className={playlists.load}>
         <Button disabled={isTheEnd} onClick={() => setSize((prev) => prev + 1)}>
           {isLoadingMore
-            ? "loading more..."
+            ? "carregando mais..."
             : isTheEnd
-            ? "no more playlists"
-            : "show more"}
+            ? "nada para mostrar"
+            : "mostrar mais"}
         </Button>
       </div>
     </div>

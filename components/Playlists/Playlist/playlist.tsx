@@ -69,12 +69,12 @@ const Playlist = ({
 
   return (
     <div className={playlist.container}>
-      <Card.Card>
-        <Card.Image>
+      <Card.Card className={playlist.playlistCard}>
+        <Card.LeftHand>
           <img src={images[0].url} alt={`${name}\'s cover`} />
-        </Card.Image>
+        </Card.LeftHand>
 
-        <Card.Content>
+        <Card.RightHand>
           <div className={playlist.info}>
             <h5>{name}</h5>
             <p>{description}</p>
@@ -84,15 +84,15 @@ const Playlist = ({
               ) : (
                 <PrivateIcon title="private" />
               )}
-              made by {owner.display_name}
+              criado por {owner.display_name}
             </span>
           </div>
           <div>
             {isOwner && (
-              <Button onClick={() => setIsModalOpen(true)}>Rename</Button>
+              <Button onClick={() => setIsModalOpen(true)}>Renomear</Button>
             )}
           </div>
-        </Card.Content>
+        </Card.RightHand>
       </Card.Card>
       <Modal
         toggle={() => setIsModalOpen((prev) => !prev)}

@@ -15,8 +15,7 @@ const Header = () => {
   return (
     <div className={header.container}>
       <h2>
-        {session.data?.user?.name} You really like to listen{" "}
-        {data?.items[0].genres[0]}
+        {session.data?.user?.name} você ama ouvir {data?.items[0].genres[0]}
       </h2>
       <Image
         src={session.data?.user?.image!}

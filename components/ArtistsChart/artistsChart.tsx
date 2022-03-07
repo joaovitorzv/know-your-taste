@@ -32,7 +32,7 @@ const ArtistsChart = () => {
   return (
     <div className={artistsChart.container}>
       <header>
-        <h2>Artists Popularity</h2>
+        <h2>Popularidade</h2>
 
         <Info.Pophover>
           <Info.Popicon>

@@ -6,14 +6,14 @@ interface Props {
   className?: string;
 }
 
-export const Card = ({ children }: Props) => {
-  return <div className={card.container}>{children}</div>;
+export const Card = ({ children, className }: Props) => {
+  return <div className={`${card.container} ${className}`}>{children}</div>;
 };
 
-export const Image = ({ children }: Props) => {
-  return <div className={card.imgContainer}>{children}</div>;
+export const LeftHand = ({ children, className }: Props) => {
+  return <div className={`${card.leftHand} ${className}`}>{children}</div>;
 };
 
-export const Content = ({ children, className }: Props) => {
-  return <div className={`${card.content} ${className}`}>{children}</div>;
+export const RightHand = ({ children, className }: Props) => {
+  return <div className={`${card.rightHand} ${className}`}>{children}</div>;
 };

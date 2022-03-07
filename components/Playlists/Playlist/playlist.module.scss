@@ -1,34 +1,38 @@
+@import "../../../styles/components";
+
 .container:not(:first-child) {
   margin-top: var(--spacer-m);
+}
+
+.playlistCard {
+  border: 3px solid var(--primary-dark);
+  border-radius: var(--rd-m);
 }
 
 .info h5 {
   margin-bottom: var(--spacer-xs);
   font-size: var(--font-header-m-size);
-  display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  @include clamp;
 }
 
 .info p {
   margin-bottom: var(--spacer-s);
   font-size: var(--font-paragraph-s-size);
+  color: var(--primary-semidark);
 
-  display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  @include clamp;
 }
 
 .info span {
   display: flex;
   align-items: center;
 
-  color: var(--primary-semidark);
+  color: var(--info);
 }
 
 .info svg {
-  fill: var(--secondary-semidark);
+  fill: var(--secondary-main);
   margin-right: var(--spacer-s);
 }

@@ -1,5 +1,11 @@
 import { SyntheticEvent, useRef, useState } from "react";
-import styles from "./lists.module.css";
+import list from "./lists.module.scss";
+import * as Card from "../../components/Card";
+import {
+  MdPauseCircleFilled as PauseIcon,
+  MdPlayCircleFilled as PlayIcon,
+  MdExplicit as ExplicitIcon,
+} from "react-icons/md";
 
 interface Props {
   name: string;
@@ -50,35 +56,41 @@ const List = ({
 
   artists.map((artist, idx) => {
     const nameWithColon = artist.name + (idx !== artists.length - 1 ? "," : "");
-    parsedArtistsName.push(<span key={artist.id}>{nameWithColon}</span>);
+    parsedArtistsName.push(
+      <span key={artist.id} className={list.artistName}>
+        {nameWithColon}
+      </span>
+    );
     artistsNameAsTitle += " " + nameWithColon;
   });
 
   return (
-    <div className={styles.list}>
-      <div onClick={handlePlay} role="button" className={styles.linkButton}>
-        <span
-          className={styles.trackDuration}
-          style={{ transform: `translateX(${playerBarWidth}%)` }}
-        />
-        {isPlaying ? <span>pau</span> : <span>play</span>}
-      </div>
-      <div className={styles.info}>
-        <h5>{name}</h5>
-        <div title={artistsNameAsTitle} className={styles.subInfo}>
-          {parsedArtistsName}
+    <Card.Card>
+      <Card.LeftHand className={list.player}>
+        <div onClick={handlePlay} role="button" className={list.play}>
+          <span
+            className={list.trackDuration}
+            style={{ transform: `translateX(${playerBarWidth}%)` }}
+          />
+          {isPlaying ? <PauseIcon size={30} /> : <PlayIcon size={30} />}
         </div>
-        {explicit && <p>Explicit</p>}
-      </div>
-      <div className={styles.audio}>
-        <a href={external_urls.spotify} target="_blank" rel="noreferrer">
-          Listen on spotify
-        </a>
-        <audio onTimeUpdate={(e) => handleAudio(e)} ref={trackPreviewRef}>
-          <source src={preview_url} type="audio/mp3" />
-        </audio>
-      </div>
-    </div>
+      </Card.LeftHand>
+      <Card.RightHand>
+        <div className={list.info}>
+          <h5 title={name}>{name}</h5>
+          <p title={artistsNameAsTitle}>{parsedArtistsName}</p>
+          {explicit && <ExplicitIcon title="Explicit" size={15} />}
+        </div>
+        <div className={list.external_url}>
+          <a href={external_urls.spotify} target="_blank" rel="noreferrer">
+            Escutar no spotify
+          </a>
+          <audio onTimeUpdate={(e) => handleAudio(e)} ref={trackPreviewRef}>
+            <source src={preview_url} type="audio/mp3" />
+          </audio>
+        </div>
+      </Card.RightHand>
+    </Card.Card>
   );
 };
 
