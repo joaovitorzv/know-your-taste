@@ -33,6 +33,19 @@ const ArtistsChart = () => {
     <div className={artistsChart.container}>
       <header>
         <h2>Artists Popularity</h2>
+
+        <Info.Pophover>
+          <Info.Popicon>
+            <InfoIcon size={18} />
+          </Info.Popicon>
+          <Info.Popover>
+            <span>Popularidade</span>
+            <p>
+              Popularidade (de 0 a 100) dos seus artistas favoritos em todo o
+              spotify.
+            </p>
+          </Info.Popover>
+        </Info.Pophover>
       </header>
       <div className={artistsChart.chart}>
         <ResponsiveContainer>
@@ -81,19 +94,6 @@ const ArtistsChart = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
-
-      <Info.Pophover>
-        <Info.Popicon>
-          <InfoIcon size={18} />
-        </Info.Popicon>
-        <Info.Popover>
-          <span>Popularidade</span>
-          <p>
-            Popularidade (de 0 a 100) dos seus artistas favoritos em todo o
-            spotify.
-          </p>
-        </Info.Popover>
-      </Info.Pophover>
     </div>
   );
 };

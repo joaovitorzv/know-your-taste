@@ -3,7 +3,7 @@ import Modal from "components/Modal/modal";
 import { useSession } from "next-auth/react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import * as Card from "../../Card";
-import type { UserPlaylists } from "./myPlaylists";
+import type { UserPlaylists } from "../myPlaylists";
 
 import { MdLock as PrivateIcon, MdPublic as PublicIcon } from "react-icons/md";
 

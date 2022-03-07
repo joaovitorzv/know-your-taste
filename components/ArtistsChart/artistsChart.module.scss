@@ -9,6 +9,11 @@
   }
 }
 
+.container header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .container header h2 {
   @include header-text;
 }
