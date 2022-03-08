@@ -1,14 +1,16 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import styles from "./styles.module.scss";
 
-interface Props {
+type Props = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> & {
   children: ReactNode;
-  disabled?: boolean | undefined;
-  onClick: () => void;
-}
-const Button = ({ children, ...rest }: Props) => {
+};
+
+const Button = ({ children, className, ...props }: Props) => {
   return (
-    <button {...rest} className={styles.btn}>
+    <button {...props} className={`${styles.btn} ${className}`}>
       {children}
     </button>
   );

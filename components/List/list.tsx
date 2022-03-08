@@ -6,6 +6,7 @@ import {
   MdPlayCircleFilled as PlayIcon,
   MdExplicit as ExplicitIcon,
 } from "react-icons/md";
+import { BiLinkExternal as LinkIcon } from "react-icons/bi";
 
 interface Props {
   name: string;
@@ -43,7 +44,7 @@ const List = ({
 
   const [playerBarWidth, setPlayerBarWith] = useState(0);
 
-  const handleAudio = (e: SyntheticEvent<HTMLAudioElement, Event>) => {
+  const handleAudio = () => {
     if (trackPreviewRef.current) {
       setPlayerBarWith(
         Math.floor((trackPreviewRef.current?.currentTime / 30) * 100)
@@ -65,7 +66,7 @@ const List = ({
   });
 
   return (
-    <Card.Card>
+    <Card.Card className={list.playerContainer}>
       <Card.LeftHand className={list.player}>
         <div onClick={handlePlay} role="button" className={list.play}>
           <span
@@ -83,9 +84,9 @@ const List = ({
         </div>
         <div className={list.external_url}>
           <a href={external_urls.spotify} target="_blank" rel="noreferrer">
-            Escutar no spotify
+            Escutar no spotify <LinkIcon />
           </a>
-          <audio onTimeUpdate={(e) => handleAudio(e)} ref={trackPreviewRef}>
+          <audio onTimeUpdate={handleAudio} ref={trackPreviewRef}>
             <source src={preview_url} type="audio/mp3" />
           </audio>
         </div>

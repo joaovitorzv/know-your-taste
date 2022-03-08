@@ -1,5 +1,9 @@
 @import "../../styles/_components.scss";
 
+.playerContainer:not(:first-child) {
+  margin-top: var(--spacer-m);
+}
+
 .info {
   width: 70%;
 }
@@ -36,8 +40,15 @@
   margin-left: 0.4em;
 }
 
-.external_url {
+.external_url a {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.external_url svg {
+  margin-left: 5px;
 }
 
 .external_url > a:hover {
@@ -56,6 +67,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  place-items: center;
 
   background-color: var(--primary-dark);
   cursor: pointer;

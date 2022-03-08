@@ -9,6 +9,10 @@
   border-radius: var(--rd-m);
 }
 
+.img {
+  box-shadow: 3px 0px 20px -3px rgba(0, 0, 0, 0.3);
+}
+
 .info h5 {
   margin-bottom: var(--spacer-xs);
   font-size: var(--font-header-m-size);
@@ -25,14 +29,55 @@
   @include clamp;
 }
 
-.info span {
+.info > span {
   display: flex;
   align-items: center;
 
   color: var(--info);
 }
 
-.info svg {
+.info > svg {
   fill: var(--secondary-main);
   margin-right: var(--spacer-s);
+}
+
+.renameModal h5 {
+  font-size: var(--font-header-m-size);
+  margin-bottom: var(--spacer-s);
+}
+
+.renameModal p {
+  font-size: var(--font-paragraph-m-size);
+  color: var(--primary-semidark);
+}
+
+.renameModal form {
+  margin: var(--spacer-m) 0;
+}
+
+.modalInput input {
+  width: 100%;
+  margin-bottom: var(--spacer-m);
+  font-size: var(--font-paragraph-m-size);
+  padding: var(--spacer-s);
+  border-radius: var(--rd-m);
+  border: 3px solid var(--primary-dark);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: center;
+}
+
+.modalActions button:first-child {
+  margin-right: var(--spacer-s);
+}
+
+.modalActions button:last-child {
+  background-color: var(--success);
+  margin-left: var(--spacer-s);
+
+  &:hover {
+    background-color: var(--primary-dark);
+  }
 }

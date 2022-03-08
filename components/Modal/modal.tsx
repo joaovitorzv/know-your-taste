@@ -1,26 +1,27 @@
-import { ReactNode, useEffect, useRef } from "react";
-import modal from "./modal.module.css";
+import { ReactNode, useRef } from "react";
+import modal from "./modal.module.scss";
+import { IoMdClose as CloseIcon } from "react-icons/io";
 
 interface Props {
   children: ReactNode | ReactNode[];
   toggle: () => void;
   isOpen: boolean;
+  headerText: string;
+  className?: string;
 }
 
-const Modal = ({ children, toggle, isOpen }: Props) => {
+const Modal = ({
+  children,
+  toggle,
+  isOpen,
+  headerText = "Modal",
+  className,
+}: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   function clickOutside(e: any) {
     if (e.target === containerRef.current) toggle();
   }
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -28,12 +29,14 @@ const Modal = ({ children, toggle, isOpen }: Props) => {
     <div
       ref={containerRef}
       onClick={(e) => clickOutside(e)}
-      className={modal.wrapper}
+      className={`${modal.wrapper} ${className}`}
     >
       <div className={modal.container}>
-        <header>
-          <h4>Modal header</h4>
-          <button onClick={toggle}>x</button>
+        <header className={modal.header}>
+          <h4>{headerText}</h4>
+          <button onClick={toggle}>
+            <CloseIcon />
+          </button>
         </header>
         <div className={modal.children}>{children}</div>
       </div>

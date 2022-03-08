@@ -70,7 +70,7 @@ const Playlist = ({
   return (
     <div className={playlist.container}>
       <Card.Card className={playlist.playlistCard}>
-        <Card.LeftHand>
+        <Card.LeftHand className={playlist.img}>
           <img src={images[0].url} alt={`${name}\'s cover`} />
         </Card.LeftHand>
 
@@ -95,20 +95,26 @@ const Playlist = ({
         </Card.RightHand>
       </Card.Card>
       <Modal
+        headerText="Renomear playlist"
         toggle={() => setIsModalOpen((prev) => !prev)}
         isOpen={isModalOpen}
+        className={playlist.renameModal}
       >
         <h5>{name}</h5>
         <p>{description}</p>
         <form onSubmit={(e) => handlePlaylistRename(e)}>
-          {formError && <p style={{ color: "red" }}>{formError}</p>}
-          <input
-            ref={renameInput}
-            placeholder="new name"
-            onChange={(e) => setRenameInputValue(e.target.value)}
-          />
-          <button onClick={() => setIsModalOpen(false)}>cancel</button>
-          <button type="submit">{formLoading ? "loading..." : "save"}</button>
+          <div className={playlist.modalInput}>
+            {formError && <p style={{ color: "red" }}>{formError}</p>}
+            <input
+              ref={renameInput}
+              placeholder="new name"
+              onChange={(e) => setRenameInputValue(e.target.value)}
+            />
+          </div>
+          <div className={playlist.modalActions}>
+            <Button onClick={() => setIsModalOpen(false)}>cancel</Button>
+            <Button type="submit">{formLoading ? "loading..." : "save"}</Button>
+          </div>
         </form>
       </Modal>
     </div>

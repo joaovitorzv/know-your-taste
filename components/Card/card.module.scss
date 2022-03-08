@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.container:not(:first-child) {
+  margin-top: var(--spacer-m);
+}
+
 .rightHand {
   padding: var(--spacer-m);
   display: flex;
