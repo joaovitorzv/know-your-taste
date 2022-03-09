@@ -3,8 +3,8 @@
 .container {
   grid-area: header;
   display: flex;
+  justify-content: space-between;
   column-gap: 1em;
-  justify-content: flex-start;
 
   margin-bottom: var(--spacer-xl);
   padding: var(--spacer-m);
@@ -18,21 +18,19 @@
 }
 
 .brand {
+  min-width: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15%;
 }
 
 .userTaste {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .userTaste h2 {
-  width: 70%;
   color: var(--primary-semidark);
   font-size: var(--font-header-l-size);
   text-align: center;
@@ -43,7 +41,6 @@
 }
 
 .sessionActions {
-  width: 15%;
   display: flex;
   align-items: center;
 

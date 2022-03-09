@@ -20,15 +20,15 @@
 .container {
   padding: var(--spacer-l);
   background-color: white;
-  max-width: 40%;
+  width: 40%;
   border-radius: var(--rd-m);
 
   @media only screen and (max-width: $lg) {
-    max-width: 70%;
+    width: 70%;
   }
 
   @media only screen and (max-width: $sm) {
-    max-width: 100%;
+    width: 100%;
   }
 }
 

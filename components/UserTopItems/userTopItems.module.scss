@@ -32,3 +32,9 @@
   font-size: var(--font-header-l-size);
   font-weight: var(--font-header-weight);
 }
+
+.headerSkeleton {
+  @media only screen and (max-width: $sm) {
+    width: 100px;
+  }
+}
