@@ -1,6 +1,8 @@
 import * as Info from "components/Popover/popover";
 import { useTopItems } from "hooks/swr/useTopItems";
 import { useState } from "react";
+import { MdInfo as InfoIcon } from "react-icons/md";
+import Skeleton from "react-loading-skeleton";
 import {
   Bar,
   BarChart,
@@ -11,11 +13,9 @@ import {
   YAxis,
 } from "recharts";
 import artistsChart from "./artistsChart.module.scss";
-import { MdInfo as InfoIcon } from "react-icons/md";
 
 const ArtistsChart = () => {
-  const { data } = useTopItems("topArtists");
-  ("some string");
+  const { data, isLoading } = useTopItems("topArtists");
 
   const [artistsChartData, setArtistsChartData] = useState<
     { name: string; popularity: number }[]
@@ -29,6 +29,19 @@ const ArtistsChart = () => {
       ])
     );
   }
+
+  if (isLoading)
+    return (
+      <div className={artistsChart.container}>
+        <header>
+          <h2>Popularidade</h2>
+        </header>
+        <div className={artistsChart.chart}>
+          <Skeleton count={5} height={30} style={{ marginTop: "1em" }} />
+        </div>
+      </div>
+    );
+
   return (
     <div className={artistsChart.container}>
       <header>

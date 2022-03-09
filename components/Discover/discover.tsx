@@ -49,25 +49,36 @@ const Discover = () => {
     }
   );
 
-  if (!data && !error) return <p>loading...</p>;
   if (error) return <p>something bad happened.</p>;
+
   return (
     <div className={`${discover.container}`}>
       <header>
         <h2>Descubra coisas novas</h2>
       </header>
       <div>
-        {data?.tracks?.map((track) => (
-          <List
-            key={track.id}
-            name={track.name}
-            explicit={track.explicit}
-            preview_url={track.preview_url}
-            external_urls={track.external_urls}
-            artists={track.artists}
-            isPlayable={track.isPlayable}
-          />
-        ))}
+        {!data && !error ? (
+          <>
+            <List isLoading={true} />
+            <List isLoading={true} />
+            <List isLoading={true} />
+            <List isLoading={true} />
+            <List isLoading={true} />
+            <List isLoading={true} />
+          </>
+        ) : (
+          data?.tracks?.map((track) => (
+            <List
+              key={track.id}
+              name={track.name}
+              explicit={track.explicit}
+              preview_url={track.preview_url}
+              external_urls={track.external_urls}
+              artists={track.artists}
+              isPlayable={track.isPlayable}
+            />
+          ))
+        )}
       </div>
     </div>
   );

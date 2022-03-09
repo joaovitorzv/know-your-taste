@@ -1,4 +1,5 @@
 import Button from "components/Button";
+import Skeleton from "react-loading-skeleton";
 import { KeyedMutator } from "swr";
 import useSWRInfinite, { SWRInfiniteKeyLoader } from "swr/infinite";
 import Playlist from "./Playlist/playlist";
@@ -53,9 +54,22 @@ const MyPlaylists = () => {
   const isEmpty = data?.length === 0;
   const isTheEnd = isEmpty || (data && data[data.length - 1].next === null);
 
-  // TODO: Fetching states
-  if (isLoading) return <p>loading...</p>;
   if (error) return <p>something bad happened!</p>;
+  if (isLoading)
+    return (
+      <div className={playlists.container}>
+        <header>
+          <h2>Minhas Playlists</h2>
+        </header>
+        <div>
+          <Skeleton height={90} style={{ marginTop: "1em" }} />
+          <Skeleton height={90} style={{ marginTop: "1em" }} />
+          <Skeleton height={90} style={{ marginTop: "1em" }} />
+          <Skeleton height={90} style={{ marginTop: "1em" }} />
+          <Skeleton height={90} style={{ marginTop: "1em" }} />
+        </div>
+      </div>
+    );
 
   return (
     <div className={playlists.container}>

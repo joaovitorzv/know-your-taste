@@ -1,14 +1,15 @@
-import { SyntheticEvent, useRef, useState } from "react";
-import list from "./lists.module.scss";
-import * as Card from "../../components/Card";
+import { useRef, useState } from "react";
+import { BiLinkExternal as LinkIcon } from "react-icons/bi";
 import {
+  MdExplicit as ExplicitIcon,
   MdPauseCircleFilled as PauseIcon,
   MdPlayCircleFilled as PlayIcon,
-  MdExplicit as ExplicitIcon,
 } from "react-icons/md";
-import { BiLinkExternal as LinkIcon } from "react-icons/bi";
+import Skeleton from "react-loading-skeleton";
+import * as Card from "../../components/Card";
+import list from "./lists.module.scss";
 
-interface Props {
+interface ListProps {
   name: string;
   explicit: boolean;
   artists: { name: string; id: string }[];
@@ -19,14 +20,17 @@ interface Props {
   };
 }
 
-const List = ({
-  name,
-  artists,
-  explicit,
-  preview_url,
-  isPlayable,
-  external_urls,
-}: Props) => {
+interface ListPropsLoading {
+  isLoading: boolean;
+}
+
+function isLoading(
+  props: ListProps | ListPropsLoading
+): props is ListPropsLoading {
+  return "isLoading" in props;
+}
+
+const List = (props: ListProps | ListPropsLoading) => {
   const trackPreviewRef = useRef<HTMLAudioElement>(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -55,17 +59,39 @@ const List = ({
   const parsedArtistsName: JSX.Element[] = [];
   var artistsNameAsTitle = "";
 
-  artists.map((artist, idx) => {
-    const nameWithColon = artist.name + (idx !== artists.length - 1 ? "," : "");
-    parsedArtistsName.push(
-      <span key={artist.id} className={list.artistName}>
-        {nameWithColon}
-      </span>
-    );
-    artistsNameAsTitle += " " + nameWithColon;
-  });
+  if (!isLoading(props)) {
+    props.artists.map((artist, idx) => {
+      const nameWithColon =
+        artist.name + (idx !== props.artists.length - 1 ? "," : "");
+      parsedArtistsName.push(
+        <span key={artist.id} className={list.artistName}>
+          {nameWithColon}
+        </span>
+      );
+      artistsNameAsTitle += " " + nameWithColon;
+    });
+  }
 
-  return (
+  return isLoading(props) ? (
+    <Card.Card className={list.playerContainer}>
+      <Card.LeftHand className={list.player}>
+        <Skeleton height={100} width={100} circle={true} />
+      </Card.LeftHand>
+      <Card.RightHand>
+        <div className={list.info}>
+          <h5>
+            <Skeleton height={25} />
+          </h5>
+          <p>
+            <Skeleton />
+          </p>
+        </div>
+        <div className={list.external_url}>
+          <Skeleton height={20} width={80} />
+        </div>
+      </Card.RightHand>
+    </Card.Card>
+  ) : (
     <Card.Card className={list.playerContainer}>
       <Card.LeftHand className={list.player}>
         <div onClick={handlePlay} role="button" className={list.play}>
@@ -78,16 +104,20 @@ const List = ({
       </Card.LeftHand>
       <Card.RightHand>
         <div className={list.info}>
-          <h5 title={name}>{name}</h5>
+          <h5 title={props.name}>{props.name}</h5>
           <p title={artistsNameAsTitle}>{parsedArtistsName}</p>
-          {explicit && <ExplicitIcon title="Explicit" size={15} />}
+          {props.explicit && <ExplicitIcon title="Explicit" size={15} />}
         </div>
         <div className={list.external_url}>
-          <a href={external_urls.spotify} target="_blank" rel="noreferrer">
+          <a
+            href={props.external_urls.spotify}
+            target="_blank"
+            rel="noreferrer"
+          >
             Escutar no spotify <LinkIcon />
           </a>
           <audio onTimeUpdate={handleAudio} ref={trackPreviewRef}>
-            <source src={preview_url} type="audio/mp3" />
+            <source src={props.preview_url} type="audio/mp3" />
           </audio>
         </div>
       </Card.RightHand>
