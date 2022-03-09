@@ -48,9 +48,6 @@ const ArtistsChart = () => {
         <h2>Popularidade</h2>
 
         <Info.Pophover>
-          <Info.Popicon>
-            <InfoIcon size={18} />
-          </Info.Popicon>
           <Info.Popover>
             <span>Popularidade</span>
             <p>
@@ -58,6 +55,10 @@ const ArtistsChart = () => {
               spotify.
             </p>
           </Info.Popover>
+
+          <Info.Popicon>
+            <InfoIcon size={18} />
+          </Info.Popicon>
         </Info.Pophover>
       </header>
       <div className={artistsChart.chart}>

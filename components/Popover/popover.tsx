@@ -6,11 +6,7 @@ interface Props {
 }
 
 export const Pophover = ({ children }: Props) => {
-  return (
-    <div className={pop.container}>
-      <div className={pop.hover}>{children}</div>
-    </div>
-  );
+  return <div className={pop.hover}>{children}</div>;
 };
 
 export const Popicon = ({ children }: Props) => {
@@ -18,5 +14,9 @@ export const Popicon = ({ children }: Props) => {
 };
 
 export const Popover = ({ children }: Props) => {
-  return <div className={pop.over}>{children}</div>;
+  return (
+    <div className={pop.overContainer}>
+      <div className={pop.over}>{children}</div>
+    </div>
+  );
 };

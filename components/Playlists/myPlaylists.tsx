@@ -102,7 +102,7 @@ const MyPlaylists = () => {
           {isLoadingMore
             ? "carregando mais..."
             : isTheEnd
-            ? "nada pra carregar"
+            ? "nada para carregar"
             : "mostrar mais"}
         </Button>
       </div>

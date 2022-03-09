@@ -1,14 +1,7 @@
-.container {
-  position: relative;
-  z-index: 5;
-}
-
 .hover {
-  position: absolute;
-  right: 0;
-  top: 0;
   display: flex;
   flex-direction: row-reverse;
+  z-index: 20;
 }
 
 .icon > svg {
@@ -16,8 +9,13 @@
   opacity: 0.4;
 }
 
-.hover:hover > .over {
-  display: initial;
+.hover:hover > .overContainer {
+  display: inline;
+}
+
+.overContainer {
+  display: none;
+  position: absolute;
 }
 
 .over {
@@ -25,9 +23,9 @@
   border-radius: var(--rd-m);
   backdrop-filter: blur(4px);
   position: relative;
+  right: 20px;
   width: 250px;
   padding: 10px;
-  display: none;
 }
 
 .over span {
