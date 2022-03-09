@@ -107,7 +107,7 @@ const Playlist = ({
             {formError && <p style={{ color: "red" }}>{formError}</p>}
             <input
               ref={renameInput}
-              placeholder="new name"
+              placeholder="novo nome"
               onChange={(e) => setRenameInputValue(e.target.value)}
             />
           </div>

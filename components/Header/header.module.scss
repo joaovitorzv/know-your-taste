@@ -17,32 +17,38 @@
   }
 }
 
-.container > div {
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+}
+
+.userTaste {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.container > nav {
-  display: flex;
-  align-items: center;
-
-  @media only screen and (max-width: $sm) {
-    padding-top: var(--spacer-s);
-    justify-content: flex-end;
-  }
-}
-
-.userTaste {
-  width: 100%;
-}
-
 .userTaste h2 {
+  width: 70%;
   color: var(--primary-semidark);
   font-size: var(--font-header-l-size);
   text-align: center;
 
   @media only screen and (max-width: $sm) {
     font-size: var(--font-header-m-size);
+  }
+}
+
+.sessionActions {
+  width: 15%;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (max-width: $sm) {
+    padding-top: var(--spacer-s);
+    justify-content: flex-end;
   }
 }

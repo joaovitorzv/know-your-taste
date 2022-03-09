@@ -3,6 +3,7 @@ import Discover from "components/Discover/discover";
 import Header from "components/Header/header";
 import MyPlaylists from "components/Playlists/myPlaylists";
 import TopItems from "components/TopItems/topItems";
+import Footer from "components/Footer/footer";
 import layout from "./layout.module.scss";
 
 const Layout = () => {
@@ -19,7 +20,7 @@ const Layout = () => {
           <MyPlaylists />
         </section>
       </main>
-      <footer>sla veio</footer>
+      <Footer />
     </div>
   );
 };

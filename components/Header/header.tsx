@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <div className={header.container}>
-      <div>
+      <div className={header.brand}>
         <Brand />
       </div>
       <div className={header.userTaste}>
@@ -22,7 +22,7 @@ const Header = () => {
           {session.data?.user?.name} você ama ouvir {data?.items[0].genres[0]}
         </h2>
       </div>
-      <nav>
+      <nav className={header.sessionActions}>
         {session.data?.user?.image && (
           <SignoutBtn userPicture={session.data.user.image} />
         )}

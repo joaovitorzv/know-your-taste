@@ -1,0 +1,15 @@
+.container {
+  padding: var(--spacer-xl) var(--spacer-m);
+  background: rgb(172, 252, 217);
+  background: linear-gradient(
+    0deg,
+    rgba(172, 252, 217, 1) 0%,
+    rgba(172, 252, 217, 0.06486344537815125) 100%
+  );
+
+  text-align: center;
+}
+
+.container ul li {
+  display: inline;
+}
