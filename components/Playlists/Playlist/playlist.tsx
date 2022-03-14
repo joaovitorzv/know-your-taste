@@ -112,8 +112,10 @@ const Playlist = ({
             />
           </div>
           <div className={playlist.modalActions}>
-            <Button onClick={() => setIsModalOpen(false)}>cancel</Button>
-            <Button type="submit">{formLoading ? "loading..." : "save"}</Button>
+            <Button onClick={() => setIsModalOpen(false)}>Cancelar</Button>
+            <Button type="submit">
+              {formLoading ? "Renomeando..." : "Salvar"}
+            </Button>
           </div>
         </form>
       </Modal>
