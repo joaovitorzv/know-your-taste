@@ -75,5 +75,5 @@ export default NextAuth({
     signIn: "/api/auth/signin",
     error: "api/auth/error",
   },
-  debug: true,
+  debug: false,
 });
