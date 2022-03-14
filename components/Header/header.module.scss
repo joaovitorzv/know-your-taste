@@ -14,7 +14,7 @@
   background-color: white;
 
   @media only screen and (max-width: $sm) {
-    flex-direction: column;
+    padding: var(--spacer-xs);
   }
 }
 
@@ -35,6 +35,10 @@
   color: var(--secondary-main);
   font-size: var(--font-header-l-size);
   text-align: center;
+
+  @media only screen and (max-width: $sm) {
+    font-size: var(--font-paragraph-m-size);
+  }
 }
 
 .sessionActions {

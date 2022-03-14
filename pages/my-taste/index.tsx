@@ -9,13 +9,15 @@ const MyTaste: NextPage = () => {
   const session = useSession();
   useEffect(() => {
     if (session.data?.error === AUTH_ERROR.REFRESH_TOKEN)
-      signIn("spotify", { callbackUrl: "http://localhost:3000/my-taste" });
+      signIn("spotify", {
+        callbackUrl: `${process.env.APP_BASE_URL}/my-taste`,
+      });
   }, [session]);
 
   return (
     <>
       <Head>
-        <title>KYT - Discover</title>
+        <title>My Taste</title>
       </Head>
       <Layout />
     </>

@@ -1,3 +1,5 @@
+@import "../../styles/breakpoints";
+
 .container {
   background: rgb(172, 252, 217);
   background: radial-gradient(
@@ -14,4 +16,8 @@
   color: black;
   font-size: var(--font-header-m-size);
   font-weight: var(--font-header-weight);
+
+  @media only screen and (max-width: $sm) {
+    font-size: var(--font-paragraph-m-size);
+  }
 }
