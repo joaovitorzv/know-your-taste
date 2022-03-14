@@ -38,6 +38,10 @@
 
 .features h2 {
   font-size: 64px;
+
+  @media only screen and (max-width: $sm) {
+    font-size: 48px;
+  }
 }
 
 .footer {

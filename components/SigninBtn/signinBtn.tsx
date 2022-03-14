@@ -17,7 +17,9 @@ const SigninBtn = ({ params }: Props) => {
       ) : null}
       <button
         onClick={() =>
-          signIn("spotify", { callbackUrl: "http://localhost:3000/my-taste" })
+          signIn("spotify", {
+            callbackUrl: `${process.env.APP_BASE_URL}/my-taste`,
+          })
         }
       >
         <SpotifyIcon size={20} />
