@@ -1,14 +1,6 @@
 import useSWR from "swr";
 
-interface UserTopTracksResponse {
-  items: {
-    id: string;
-    name: string;
-    images: { height: number; width: number; url: string }[];
-    genres: string[];
-  }[];
-}
-interface UserTopTracksResponse {
+interface UserTopItemsResponse {
   items: {
     id: string;
     name: string;
