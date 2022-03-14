@@ -5,8 +5,18 @@
   margin-top: var(--spacer-m);
 }
 
+.rightHand {
+  @media only screen and (max-width: $sm) {
+    align-items: flex-start;
+  }
+}
+
 .info {
   width: 70%;
+
+  @media only screen and (max-width: $sm) {
+    width: 100%;
+  }
 }
 
 .info > h5 {
@@ -60,6 +70,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: $sm) {
+    justify-content: flex-start;
+  }
 }
 
 .play {
@@ -78,8 +92,8 @@
   overflow: hidden;
 
   @media only screen and (max-width: $sm) {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
   }
 }
 

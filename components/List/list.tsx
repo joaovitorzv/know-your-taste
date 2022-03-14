@@ -102,7 +102,7 @@ const List = (props: ListProps | ListPropsLoading) => {
           {isPlaying ? <PauseIcon size={30} /> : <PlayIcon size={30} />}
         </div>
       </Card.LeftHand>
-      <Card.RightHand>
+      <Card.RightHand className={list.rightHand}>
         <div className={list.info}>
           <h5 title={props.name}>{props.name}</h5>
           <p title={artistsNameAsTitle}>{parsedArtistsName}</p>
