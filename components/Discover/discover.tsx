@@ -26,9 +26,9 @@ const Discover = () => {
   const { data: artists } = useTopItems("topArtists");
   const { data: tracks } = useTopItems("topTracks");
 
-  const [SeedGenres, setSeedGenres] = useState();
-  const [SeedArtists, setSeedArtists] = useState();
-  const [SeedTracks, setSeedTracks] = useState();
+  const [SeedGenres, setSeedGenres] = useState<string>();
+  const [SeedArtists, setSeedArtists] = useState<string>();
+  const [SeedTracks, setSeedTracks] = useState<string>();
 
   useEffect(() => {
     if (artists && tracks) {
