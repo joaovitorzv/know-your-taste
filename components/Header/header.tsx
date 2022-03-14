@@ -5,15 +5,25 @@ import { useSession } from "next-auth/react";
 
 import header from "./header.module.scss";
 
-const Header = () => {
+interface Props {
+  className?: string;
+}
+
+const Header = ({ className }: Props) => {
   const session = useSession();
   const { data } = useTopItems("topArtists");
 
   if (session.status === "loading" || session.status === "unauthenticated")
-    return null;
+    return (
+      <div className={header.container}>
+        <div style={{ textAlign: "center" }}>
+          <Brand />
+        </div>
+      </div>
+    );
 
   return (
-    <div className={header.container}>
+    <header className={`${header.container} ${className}`}>
       <div className={header.brand}>
         <Brand />
       </div>
@@ -22,12 +32,12 @@ const Header = () => {
           {session.data?.user?.name} você ama ouvir {data?.items[0].genres[0]}
         </h2>
       </div>
-      <nav className={header.sessionActions}>
+      <div className={header.sessionActions}>
         {session.data?.user?.image && (
           <SignoutBtn userPicture={session.data.user.image} />
         )}
-      </nav>
-    </div>
+      </div>
+    </header>
   );
 };
 

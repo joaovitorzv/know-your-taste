@@ -1,13 +1,17 @@
 import footer from "./footer.module.scss";
 
-const Footer = () => {
+interface Props {
+  className?: string;
+}
+
+const Footer = ({ className }: Props) => {
   return (
-    <footer className={footer.container}>
+    <footer className={`${footer.container} ${className}`}>
       <ul>
         <li>&copy; {new Date().getFullYear()}</li>
-        {" | "}
+        {"|"}
         <li>Termos</li>
-        {" | "}
+        {"|"}
         <li>
           <a
             href="https://github.com/joaovitorzv"

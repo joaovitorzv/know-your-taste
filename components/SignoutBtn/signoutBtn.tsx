@@ -19,14 +19,12 @@ const SignoutBtn = ({ userPicture }: Props) => {
   }
 
   return (
-    <div>
-      <Button className={signoutBtn.btn} onClick={() => handleSignOut()}>
-        <div className={signoutBtn.img}>
-          <img src={userPicture} height={30} alt="user picture" />
-        </div>
-        Sair
-      </Button>
-    </div>
+    <Button className={signoutBtn.btn} onClick={() => handleSignOut()}>
+      <div className={signoutBtn.img}>
+        <img src={userPicture} height={30} alt="user picture" />
+      </div>
+      Sair
+    </Button>
   );
 };
 

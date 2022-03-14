@@ -29,16 +29,15 @@
   @include clamp;
 }
 
-.info > span {
+.info span {
   display: flex;
   align-items: center;
-
   color: var(--info);
 }
 
-.info > svg {
+.info span svg {
   fill: var(--secondary-main);
-  margin-right: var(--spacer-s);
+  margin-right: var(--spacer-xs);
 }
 
 .renameModal h5 {

@@ -3,46 +3,43 @@
 .container {
   grid-area: header;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   column-gap: 1em;
 
-  margin-bottom: var(--spacer-xl);
   padding: var(--spacer-m);
   -webkit-box-shadow: 0px 10px 26px -8px rgba(0, 0, 0, 0.09);
   -moz-box-shadow: 0px 10px 26px -8px rgba(0, 0, 0, 0.09);
   box-shadow: 0px 10px 26px -8px rgba(0, 0, 0, 0.09);
+  background-color: white;
 
   @media only screen and (max-width: $sm) {
     flex-direction: column;
   }
 }
 
+.container div {
+  flex: 1;
+}
+
 .brand {
-  min-width: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 .userTaste {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .userTaste h2 {
-  color: var(--primary-semidark);
+  color: var(--secondary-main);
   font-size: var(--font-header-l-size);
   text-align: center;
-
-  @media only screen and (max-width: $sm) {
-    font-size: var(--font-header-m-size);
-  }
 }
 
 .sessionActions {
   display: flex;
-  align-items: center;
+  justify-content: flex-end;
 
   @media only screen and (max-width: $sm) {
     padding-top: var(--spacer-s);

@@ -1,3 +1,17 @@
+.container {
+  background: rgb(172, 252, 217);
+  background: radial-gradient(
+    circle,
+    rgba(172, 252, 217, 1) 0%,
+    rgba(172, 252, 217, 0) 100%
+  );
+  padding: var(--spacer-s);
+  border-radius: var(--rd-m);
+  display: inline-flex;
+}
+
 .brand {
-  color: var(--secondary-semidark);
+  color: black;
+  font-size: var(--font-header-m-size);
+  font-weight: var(--font-header-weight);
 }

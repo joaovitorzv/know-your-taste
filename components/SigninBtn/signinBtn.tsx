@@ -1,5 +1,7 @@
 import { signIn } from "next-auth/react";
 import { ParsedUrlQuery } from "querystring";
+import btn from "./signinBtn.module.scss";
+import { BsSpotify as SpotifyIcon } from "react-icons/bs";
 
 type Props = {
   params: ParsedUrlQuery;
@@ -7,16 +9,19 @@ type Props = {
 
 const SigninBtn = ({ params }: Props) => {
   return (
-    <div>
+    <div className={btn.signin}>
       {params.callbackError ? (
-        <p>Couldn&apos;t authenticate your spotify account, try again.</p>
+        <p>
+          Não foi possivel conectar com sua conta do spotify, tente novamente.
+        </p>
       ) : null}
       <button
         onClick={() =>
           signIn("spotify", { callbackUrl: "http://localhost:3000/my-taste" })
         }
       >
-        login with spotify
+        <SpotifyIcon size={20} />
+        Entrar com spotify.
       </button>
     </div>
   );

@@ -15,7 +15,7 @@ const Layout = () => {
       duration={2}
     >
       <div className={layout.container}>
-        <Header />
+        <Header className={layout.header} />
         <main>
           <section className={layout.flex}>
             <ArtistsChart />
