@@ -15,7 +15,7 @@ const Header = ({ className }: Props) => {
 
   if (session.status === "loading" || session.status === "unauthenticated")
     return (
-      <div className={header.container}>
+      <div className={`${header.container} ${className}`}>
         <div style={{ textAlign: "center" }}>
           <Brand />
         </div>
