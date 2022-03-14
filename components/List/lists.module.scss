@@ -1,4 +1,5 @@
 @import "../../styles/_components.scss";
+@import "../../styles/breakpoints.scss";
 
 .playerContainer:not(:first-child) {
   margin-top: var(--spacer-m);
@@ -75,6 +76,11 @@
   border-radius: 50%;
   position: relative;
   overflow: hidden;
+
+  @media only screen and (max-width: $sm) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .play > svg {

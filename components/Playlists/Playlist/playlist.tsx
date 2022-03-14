@@ -70,11 +70,11 @@ const Playlist = ({
   return (
     <div className={playlist.container}>
       <Card.Card className={playlist.playlistCard}>
-        <Card.LeftHand className={playlist.img}>
+        <Card.LeftHand className={playlist.leftHand}>
           <img src={images[0].url} alt={`${name}\'s cover`} />
         </Card.LeftHand>
 
-        <Card.RightHand>
+        <Card.RightHand className={playlist.rightHand}>
           <div className={playlist.info}>
             <h5>{name}</h5>
             <p>{description}</p>
@@ -84,12 +84,17 @@ const Playlist = ({
               ) : (
                 <PrivateIcon title="private" />
               )}
-              criado por {owner.display_name}
+              Criado por {owner.display_name}
             </span>
           </div>
-          <div>
+          <div className={playlist.renameContainer}>
             {isOwner && (
-              <Button onClick={() => setIsModalOpen(true)}>Renomear</Button>
+              <Button
+                onClick={() => setIsModalOpen(true)}
+                className={playlist.renameBtn}
+              >
+                Renomear
+              </Button>
             )}
           </div>
         </Card.RightHand>
@@ -107,7 +112,7 @@ const Playlist = ({
             {formError && <p style={{ color: "red" }}>{formError}</p>}
             <input
               ref={renameInput}
-              placeholder="novo nome"
+              placeholder="Novo nome"
               onChange={(e) => setRenameInputValue(e.target.value)}
             />
           </div>

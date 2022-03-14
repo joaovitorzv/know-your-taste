@@ -1,17 +1,16 @@
+@import "../../styles/breakpoints";
+
 .container {
   overflow: hidden;
 
   width: 100%;
   height: 100px;
   display: flex;
-}
 
-.rightHand {
-  padding: var(--spacer-m);
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
+  @media only screen and (max-width: $sm) {
+    overflow: visible;
+    height: auto;
+  }
 }
 
 .leftHand {
@@ -22,4 +21,17 @@
 .leftHand img {
   width: 100px;
   height: 100px;
+}
+
+.rightHand {
+  padding: var(--spacer-m);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  @media only screen and (max-width: $sm) {
+    flex-direction: column;
+    padding: var(--spacer-s);
+  }
 }

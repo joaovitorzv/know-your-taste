@@ -6,6 +6,7 @@ import TopItems from "components/TopItems/topItems";
 import Footer from "components/Footer/footer";
 import layout from "./layout.module.scss";
 import { SkeletonTheme } from "react-loading-skeleton";
+import UserTaste from "components/UserTaste/userTaste";
 
 const Layout = () => {
   return (
@@ -17,6 +18,9 @@ const Layout = () => {
       <div className={layout.container}>
         <Header className={layout.header} />
         <main>
+          <section>
+            <UserTaste />
+          </section>
           <section className={layout.flex}>
             <ArtistsChart />
             <TopItems />
