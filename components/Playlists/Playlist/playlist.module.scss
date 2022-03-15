@@ -8,7 +8,6 @@
 .playlistCard {
   border: 3px solid var(--primary-dark);
   border-radius: var(--rd-m);
-  height: auto;
 
   @media only screen and (max-width: $sm) {
     padding: var(--spacer-s);
