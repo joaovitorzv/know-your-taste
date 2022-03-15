@@ -3,7 +3,7 @@
 .topItems {
   display: flex;
   width: 50%;
-  gap: 0 1em;
+  margin-bottom: var(--spacer-m);
 
   @media only screen and (max-width: $lg) {
     width: 100%;
@@ -11,6 +11,5 @@
 
   @media only screen and (max-width: $sm) {
     flex-direction: column-reverse;
-    gap: 1em 0;
   }
 }

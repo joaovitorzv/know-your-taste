@@ -3,6 +3,10 @@
 
 .container {
   width: 100%;
+
+  &:not(:first-child) {
+    margin-bottom: var(--spacer-m);
+  }
 }
 
 .container header h2 {
