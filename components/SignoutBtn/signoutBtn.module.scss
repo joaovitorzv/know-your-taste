@@ -1,8 +1,12 @@
 .btn {
   display: flex;
   align-items: center;
-  background-color: var(--warning);
-  color: white;
+  background-color: var(--primary-main);
+  color: black;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .img {
