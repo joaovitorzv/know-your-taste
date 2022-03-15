@@ -70,10 +70,12 @@
   display: flex;
   align-items: center;
   color: var(--info);
+  font-size: var(--font-button-m);
 }
 
 .info span svg {
-  fill: var(--secondary-main);
+  width: 16px;
+  height: 16px;
   margin-right: var(--spacer-xs);
 }
 
