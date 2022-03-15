@@ -22,7 +22,6 @@
 
 .rightHand {
   @media only screen and (max-width: $sm) {
-    gap: var(--spacer-s) 0;
     align-items: flex-start;
   }
 }
@@ -41,6 +40,10 @@
     width: 100%;
     min-height: 28px;
   }
+}
+
+.info {
+  margin-bottom: var(--spacer-s);
 }
 
 .info h5 {
