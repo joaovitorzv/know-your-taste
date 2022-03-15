@@ -28,12 +28,12 @@
 
   @media only screen and (max-width: $lg) {
     flex-direction: column;
-    gap: 1em 0;
+    gap: var(--spacer-l) 0;
   }
 
   @media only screen and (max-width: $sm) {
     flex-direction: column-reverse;
-    gap: 1em 0;
+    gap: var(--spacer-l) 0;
   }
 
   &:not(:first-child) {

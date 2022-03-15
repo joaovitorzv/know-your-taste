@@ -34,6 +34,9 @@
 }
 
 .renameBtn {
+  color: var(--secondary-main);
+  background-color: var(--primary-main);
+
   @media only screen and (max-width: $sm) {
     width: 100%;
     min-height: 28px;
