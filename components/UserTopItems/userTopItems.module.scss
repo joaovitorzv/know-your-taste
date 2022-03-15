@@ -24,20 +24,30 @@
 }
 
 .list li {
-  display: inline;
+  display: flex;
+  align-items: center;
   height: 50px;
   margin-top: var(--spacer-m);
+  counter-increment: item;
 
   @media only screen and (max-width: $sm) {
     height: auto;
   }
 }
 
-.list li::marker {
+.list li::before {
   color: var(--secondary-semilight);
   font-size: var(--font-header-l-size);
   font-weight: var(--font-header-weight);
-  display: inline;
+  width: 24px;
+  margin-right: var(--spacer-s);
+
+  content: counter(item) ".";
+
+  @media only screen and (max-width: $sm) {
+    font-size: (var(--font-header-xl-size));
+    margin-right: var(--spacer-m);
+  }
 }
 
 .headerSkeleton {
@@ -51,6 +61,7 @@
   align-items: center;
 
   @media only screen and (max-width: $sm) {
+    width: 100%;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
