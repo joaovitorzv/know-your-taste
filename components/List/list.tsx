@@ -47,12 +47,12 @@ const List = (props: ListProps | ListPropsLoading) => {
     }
   };
 
-  const [playerBarWidth, setPlayerBarWith] = useState(0);
+  const [playerBarWidth, setPlayerBarWidth] = useState(-100);
 
   const handleAudio = () => {
     if (trackPreviewRef.current) {
-      setPlayerBarWith(
-        Math.floor((trackPreviewRef.current?.currentTime / 30) * 100)
+      setPlayerBarWidth(
+        Math.floor((trackPreviewRef.current?.currentTime / 30) * 100 - 100)
       );
     }
   };
@@ -96,12 +96,12 @@ const List = (props: ListProps | ListPropsLoading) => {
     <Card.Card className={list.playerContainer}>
       <Card.LeftHand className={list.player}>
         <div onClick={handlePlay} role="button" className={list.play}>
+          {isPlaying ? <PauseIcon size={30} /> : <PlayIcon size={30} />}
           <img src={props.coverImage} height={70} width={70} alt={props.name} />
           <span
             className={list.trackDuration}
             style={{ transform: `translateX(${playerBarWidth}%)` }}
           />
-          {isPlaying ? <PauseIcon size={30} /> : <PlayIcon size={30} />}
         </div>
       </Card.LeftHand>
       <Card.RightHand className={list.rightHand}>
