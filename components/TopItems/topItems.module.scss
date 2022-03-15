@@ -3,13 +3,13 @@
 .topItems {
   display: flex;
   width: 49%;
-  margin-bottom: var(--spacer-m);
 
   @media only screen and (max-width: $lg) {
     width: 100%;
   }
 
   @media only screen and (max-width: $sm) {
+    margin-bottom: var(--spacer-m);
     flex-direction: column-reverse;
   }
 }
