@@ -18,7 +18,7 @@ const Footer = ({ className }: Props) => {
             target="_blank"
             rel="noreferrer"
           >
-            @joaovitorzv
+            Crafted by @joaovitorzv
           </a>
         </li>
       </ul>
