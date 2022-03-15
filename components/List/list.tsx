@@ -11,6 +11,7 @@ import list from "./lists.module.scss";
 
 interface ListProps {
   name: string;
+  coverImage: string;
   explicit: boolean;
   artists: { name: string; id: string }[];
   preview_url: string;
@@ -95,6 +96,7 @@ const List = (props: ListProps | ListPropsLoading) => {
     <Card.Card className={list.playerContainer}>
       <Card.LeftHand className={list.player}>
         <div onClick={handlePlay} role="button" className={list.play}>
+          <img src={props.coverImage} height={70} width={70} alt={props.name} />
           <span
             className={list.trackDuration}
             style={{ transform: `translateX(${playerBarWidth}%)` }}

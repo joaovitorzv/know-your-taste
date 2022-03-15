@@ -34,12 +34,11 @@ const UserTopItems = ({ type }: Props) => {
         <h2>Top {favorite[type]}</h2>
       </header>
       <ol className={styles.list}>
-        {console.log(data)}
         {type === "topArtists"
           ? data?.items.map((artist: any) => (
               <li key={artist.name}>
                 <div className={styles.artistListContainer}>
-                  <img src={artist.images[0].url} alt="a" />
+                  <img src={artist.images[0].url} alt={artist.name} />
                   <div className={styles.artistList}>
                     <p title={artist.name}>{artist.name}</p>
                     <span>
@@ -56,7 +55,7 @@ const UserTopItems = ({ type }: Props) => {
           : data?.items.map((track: any) => (
               <li key={track.name}>
                 <div className={styles.artistListContainer}>
-                  <img src={track.album.images[0].url} alt="a" />
+                  <img src={track.album.images[0].url} alt={track.name} />
                   <div className={styles.artistList}>
                     <p title={track.name}>{track.name}</p>
                     <span>

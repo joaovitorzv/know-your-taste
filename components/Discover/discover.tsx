@@ -2,7 +2,6 @@ import List from "components/List/list";
 import { useTopItems } from "hooks/swr/useTopItems";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
-
 import discover from "./discover.module.scss";
 
 interface DiscoverResponse {
@@ -19,6 +18,9 @@ interface DiscoverResponse {
       name: string;
       id: string;
     }[];
+    album: {
+      images: { url: string }[];
+    };
   }[];
 }
 
@@ -48,6 +50,7 @@ const Discover = () => {
       revalidateOnReconnect: false,
     }
   );
+  console.log(data);
 
   if (error) return <p>something bad happened.</p>;
 
@@ -71,6 +74,7 @@ const Discover = () => {
             <List
               key={track.id}
               name={track.name}
+              coverImage={track.album.images[0].url}
               explicit={track.explicit}
               preview_url={track.preview_url}
               external_urls={track.external_urls}
