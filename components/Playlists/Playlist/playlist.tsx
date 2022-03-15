@@ -105,7 +105,7 @@ const Playlist = ({
         isOpen={isModalOpen}
         className={playlist.renameModal}
       >
-        <h5>{name}</h5>
+        <h5 title={name}>{name}</h5>
         <p>{description}</p>
         <form onSubmit={(e) => handlePlaylistRename(e)}>
           <div className={playlist.modalInput}>
