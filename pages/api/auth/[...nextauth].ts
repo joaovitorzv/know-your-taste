@@ -73,7 +73,7 @@ export default NextAuth({
   },
   pages: {
     signIn: "/api/auth/signin",
-    error: "api/auth/error",
+    error: "/api/auth/error",
   },
   debug: false,
 });
