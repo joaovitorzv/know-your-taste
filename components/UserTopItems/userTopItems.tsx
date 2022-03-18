@@ -14,6 +14,24 @@ const favorite = {
   topTracks: "músicas",
 };
 
+const TopArtists = ({ artists }) => {
+  return artists.items.map((artist: any) => (
+    <li key={artist.name}>
+      <div className={styles.artistListContainer}>
+        <img src={artist.images[0].url} alt={artist.name} />
+        <div className={styles.artistList}>
+          <p title={artist.name}>{artist.name}</p>
+          <span>
+            <FollowersIcon />{" "}
+            {new Intl.NumberFormat("pt-BR").format(artist.followers.total)}{" "}
+            seguidores
+          </span>
+        </div>
+      </div>
+    </li>
+  ));
+};
+
 const UserTopItems = ({ type }: Props) => {
   const { data, isLoading } = useTopItems(type);
   if (isLoading)
@@ -42,11 +60,11 @@ const UserTopItems = ({ type }: Props) => {
                   <div className={styles.artistList}>
                     <p title={artist.name}>{artist.name}</p>
                     <span>
-                      <FollowersIcon />{" "}
+                      <FollowersIcon />
                       {new Intl.NumberFormat("pt-BR").format(
                         artist.followers.total
                       )}{" "}
-                      followers
+                      seguidores
                     </span>
                   </div>
                 </div>

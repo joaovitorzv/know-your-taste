@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-interface UserTopItemsResponse {
+interface TopTracksResponse {
   items: {
     id: string;
     name: string;
@@ -9,10 +9,31 @@ interface UserTopItemsResponse {
   }[];
 }
 
-export function useTopItems(type: "topArtists" | "topTracks") {
-  const { data, error } = useSWR<UserTopItemsResponse>(`/api/user/${type}`);
+interface TopArtistsResponse {
+  items: {
+    id: string;
+    name: string;
+    images: {
+      url: string;
+    }[];
+    followers: {
+      total: number;
+    };
+  }[];
+}
 
+type TopItemsType = "topArtists" | "topTracks";
+
+type UseTopItems<T extends TopItemsType> = T extends "topArtists"
+  ? TopArtistsResponse
+  : T extends "topTracks"
+  ? TopTracksResponse
+  : never;
+
+export function useTopItems<T extends TopItemsType>(type: T) {
+  const { data, error } = useSWR<UseTopItems<T>>(`/api/user/${type}`);
   const isLoading = !data && !error;
+
   return {
     isLoading,
     data,
