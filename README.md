@@ -2,9 +2,12 @@
 
 ### Project Overview
   In this project I implemented a OAuth flow using the Spotify API, when the user authenticates with his spotify account he's redirected back to a different page, where he can see a Chart of his Top artists popularity, an ordered list of his Top artists and Top Tracks, a discover section with some musics based on his taste where is possible to play a 30sec preview of these songs and finnaly a section showing all the user playlists with a button that opens a modal to rename the playlist.
+  
+
+#### Little summary of the features implementation
 
   - [OAuth implementation](https://github.com/joaovitorzv/know-your-taste/blob/main/pages/api/auth/%5B...nextauth%5D.ts)
-    - To implement the OAuth (something that I had never done before) I picked [next-auth-js](https://next-auth.js.org) which comes with built-in support for spotify OAuth, CSRF token validation (Spotify really recommends while using their API), tab syncing, auto revalidation etc, I just had to implement the token refreshing by myself // BETTER EXPLANATION
+    - To implement the OAuth (something that I had never done before) I picked [next-auth-js](https://next-auth.js.org) which comes with built-in support for most used providers and spotify is included, there are CSRF token validation (Spotify really recommends while using their API) and other cool features, I also implemented the token refresh, whenever the user interacts with the "session" there are a `jwt()` callback that creates a token with the expiration time of 1 hour if it's the first interaction (login) if not it will only verify if the 1 hour has expired, if so it makes a request to the spotify `/token` endpoint with our `refresh_token` if everything is alright we get a fresh token and updates the expiration time if something fails we return an error to the session hook which is a dependency of a useEffect inside the `/my-taste` page, on the effect we trigger the `sigin()` and hopefully the user will get his session back
 
   - [Charts implementation](https://github.com/joaovitorzv/know-your-taste/blob/main/components/ArtistsChart/artistsChart.tsx)
     - There are nothing too special with this feature I just really wanted to implement a Chart, for that I used [recharts](http://recharts.org/), basically it's a bar chart that shows the popularity from 0 to 100 of the user Popular artists, by default the orientation is vertical I made It look horizontal, styled every piece to make it fit the application style and wrapped with a responsive container to make the chart responsible (of course)
