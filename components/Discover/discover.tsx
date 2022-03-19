@@ -50,7 +50,9 @@ const Discover = () => {
       revalidateOnReconnect: false,
     }
   );
-  console.log(data);
+
+  const listSkeleton = [];
+  for (let i = 0; i < 5; i++) listSkeleton.push(<List isLoading={true} />);
 
   if (error) return <p>something bad happened.</p>;
 
@@ -61,14 +63,7 @@ const Discover = () => {
       </header>
       <div>
         {!data && !error ? (
-          <>
-            <List isLoading={true} />
-            <List isLoading={true} />
-            <List isLoading={true} />
-            <List isLoading={true} />
-            <List isLoading={true} />
-            <List isLoading={true} />
-          </>
+          <>{listSkeleton}</>
         ) : (
           data?.tracks?.map((track) => (
             <List
