@@ -27,7 +27,7 @@
 
     > in SWR endpoints also works as a "key" because the request is made once and reused everywhere the same key (endpoint) is passed, that's why it is called "getKey"
 
-    - [Renaming](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/Playlist/playlist.tsx) It's just a modal that allows the user rename playlists they own, to deliver a good UX I implemented a function that closes the modal if the user clicked outside the "actions" container, to rename a request is made to the same endpoint as above but as POST if everything was ok the modal closes and the name is now changed
+    - [Renaming Playlists](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/Playlist/playlist.tsx) It's just a modal! that allows the user rename playlists they own, to deliver a good UX I implemented a function that closes the modal if the user clicked outside the "actions" container, to actually rename the playlist a request is made to the same endpoint that GETs the playlists above but as POST, if everything was ok the modal closes and the name is also visually changed on the state using the `mutate()` a function that tells SWR to revalidate  
 
 ## License
 
