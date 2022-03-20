@@ -23,7 +23,7 @@
     
   - [User Playlists Implementation](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/myPlaylists.tsx)
     - Yes I agree doesn't make much sense having this feature where the main ideia of the app is know your music taste BUT... technically speaking we have some cool things going on here
-    - [Playlists Pagination](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/myPlaylists.tsx#L38) Our Next API `/playlists` endpoint accepts two query parameters `limit` and `next`
+    - [Playlists Pagination](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/myPlaylists.tsx#L38) 
     - [Renaming](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/Playlist/playlist.tsx) It's just a modal that allows the user rename playlists they own, to deliver a good UX I implemented a function that closes the modal if the user clicked outside the "actions" container, to rename a request is made to the same endpoint as above but as POST if everything was ok the modal closes and the name is now changed
 
 ## License
