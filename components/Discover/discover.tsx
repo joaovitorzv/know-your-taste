@@ -51,10 +51,6 @@ const Discover = () => {
     }
   );
 
-  console.log(
-    `/api/discover?seed_genres=${seedGenres}&seed_artists=${seedArtists}&seed_tracks=${seedTracks}`
-  );
-
   const listSkeleton = [];
   for (let i = 0; i < 5; i++)
     listSkeleton.push(<List isLoading={true} key={i} />);

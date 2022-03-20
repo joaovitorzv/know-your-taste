@@ -32,7 +32,6 @@ export default async function handler(
 
     const { next, limit } = req.query;
 
-    console.log({ next, limit });
     if (!next) {
       const response = await fetch(
         `https://api.spotify.com/v1/me/playlists?limit=${limit}`,
