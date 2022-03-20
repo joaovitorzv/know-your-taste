@@ -21,8 +21,10 @@
     - ([preview songs](https://github.com/joaovitorzv/know-your-taste/blob/main/components/List/list.tsx#L34)) Spotify returns a 30s MP3 preview of the songs, to make a fancy player there are a round div with the song cover as background and whenever the user starts the player a `<span />` with a little black opacity starts to fill the player using the `transform: translateX()` css property based on how many percent the sound has been played
      
     
-  - User Playlists Implementation
-    // TODO
+  - [User Playlists Implementation](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/myPlaylists.tsx)
+    - Yes I agree doesn't make much sense having this feature where the main ideia of the app is know your music taste BUT... technically speaking we have some cool things going on here
+    - [Playlists Pagination](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/myPlaylists.tsx#L38) Our Next API `/playlists` endpoint accepts two query parameters `limit` and `next`
+    - [Renaming](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/Playlist/playlist.tsx) It's just a modal that allows the user rename playlists they own, to deliver a good UX I implemented a function that closes the modal if the user clicked outside the "actions" container, to rename a request is made to the same endpoint as above but as POST if everything was ok the modal closes and the name is now changed
 
 ## License
 
