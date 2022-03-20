@@ -1,5 +1,7 @@
 # know your taste
 
+The project is deployed and live at [know-your-taste.vercel.app](https://know-your-taste.vercel.app/), but sadly spotify development API does not release the extension quota to personal side projects, that means only users added to the "whitelist" of this project API can interact.
+
 ### Project Overview
   In this project I implemented a OAuth flow using the Spotify API, when the user authenticates with his spotify account he's redirected back to a different page, where he can see a Chart of his Top artists popularity, an ordered list of his Top artists and Top Tracks, a discover section with some musics based on his taste where is possible to play a 30sec preview of these songs and finnaly a section showing all the user playlists with a button that opens a modal to rename the playlist.
   
