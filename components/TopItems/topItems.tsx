@@ -11,8 +11,8 @@ interface ListItemSkeletonWrapperProps {
 }
 
 const ListItemSkeleton = ({ count }: ListItemSkeletonWrapperProps) => {
-  const listItem = (
-    <li>
+  const listItem = (key: number) => (
+    <li key={key}>
       <div className={topItems.artistListContainer}>
         <Skeleton height={50} width={50} />
         <div className={topItems.artistList} style={{ paddingLeft: "10px" }}>
@@ -26,7 +26,7 @@ const ListItemSkeleton = ({ count }: ListItemSkeletonWrapperProps) => {
   );
   const listItemsSkeleton: JSX.Element[] = [];
 
-  for (let i = 0; i < count; i++) listItemsSkeleton.push(listItem);
+  for (let i = 0; i < count; i++) listItemsSkeleton.push(listItem(i));
 
   return <>{listItemsSkeleton}</>;
 };

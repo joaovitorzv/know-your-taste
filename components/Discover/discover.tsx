@@ -28,21 +28,21 @@ const Discover = () => {
   const { data: artists } = useTopItems("topArtists");
   const { data: tracks } = useTopItems("topTracks");
 
-  const [SeedGenres, setSeedGenres] = useState<string>();
-  const [SeedArtists, setSeedArtists] = useState<string>();
-  const [SeedTracks, setSeedTracks] = useState<string>();
+  const [seedGenres, setSeedGenres] = useState<string>();
+  const [seedArtists, setSeedArtists] = useState<string>();
+  const [seedTracks, setSeedTracks] = useState<string>();
 
   useEffect(() => {
-    if (artists && tracks) {
-      setSeedGenres(artists?.items[0].genres[0]);
-      setSeedArtists(artists?.items[0].id);
-      setSeedTracks(tracks?.items[0].id);
+    if (artists?.items && tracks?.items) {
+      setSeedGenres(artists.items[0].genres[0]);
+      setSeedArtists(artists.items[0].id);
+      setSeedTracks(tracks.items[0].id);
     }
   }, [artists, tracks]);
 
   const { data, error } = useSWR<DiscoverResponse>(
     artists
-      ? `/api/discover?seed_genres=${SeedGenres}&seed_artists=${SeedArtists}&seed_tracks=${SeedTracks}` // takes all genres string from top artist
+      ? `/api/discover?seed_genres=${seedGenres}&seed_artists=${seedArtists}&seed_tracks=${seedTracks}` // takes all genres string from top artist
       : null,
     null,
     {
@@ -51,8 +51,13 @@ const Discover = () => {
     }
   );
 
+  console.log(
+    `/api/discover?seed_genres=${seedGenres}&seed_artists=${seedArtists}&seed_tracks=${seedTracks}`
+  );
+
   const listSkeleton = [];
-  for (let i = 0; i < 5; i++) listSkeleton.push(<List isLoading={true} />);
+  for (let i = 0; i < 5; i++)
+    listSkeleton.push(<List isLoading={true} key={i} />);
 
   if (error) return <p>something bad happened.</p>;
 
