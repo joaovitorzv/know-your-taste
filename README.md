@@ -23,7 +23,10 @@
     
   - [User Playlists](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/myPlaylists.tsx)
     - Yes I agree doesn't make much sense having this feature where the main ideia of the app is know your music taste BUT... technically speaking we have some cool things going on here
-    - [Playlists Pagination](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/myPlaylists.tsx#L38) 
+    - [Playlists Pagination](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/myPlaylists.tsx#L38) Spotify API has offset based pagination, To fetch only 5 playlists and fetch more 5 if the user clicks to load more I used the `useSWRInfinite` the difference between this hook and the other used before (`useSWR`) is that I can pass a `getKey()` function as parameter and this function has access to the previous fetched page and current page index, that way we can tell whenever it's the first page, has more data to be fetched or reached the end. Here our data structure is an array and each new page fetched is pushed into this array, something like that `[[5 playlists], [5 playlists], [5 playlists]]`
+
+    > in SWR endpoints also works as a "key" because the request is made once and reused everywhere the same key (endpoint) is passed, that's why it is called "getKey"
+
     - [Renaming](https://github.com/joaovitorzv/know-your-taste/blob/main/components/Playlists/Playlist/playlist.tsx) It's just a modal that allows the user rename playlists they own, to deliver a good UX I implemented a function that closes the modal if the user clicked outside the "actions" container, to rename a request is made to the same endpoint as above but as POST if everything was ok the modal closes and the name is now changed
 
 ## License
