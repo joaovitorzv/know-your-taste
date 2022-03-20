@@ -32,6 +32,7 @@ export default async function handler(
 
     const { next, limit } = req.query;
 
+    console.log({ next, limit });
     if (!next) {
       const response = await fetch(
         `https://api.spotify.com/v1/me/playlists?limit=${limit}`,
@@ -44,17 +45,15 @@ export default async function handler(
         }
       );
       const data = await response.json();
-
       res.status(200).json(data);
     } else {
-      const response = await fetch(next as string, {
+      const response = await fetch(`${next}&limit=${limit}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${session.accessToken}`,
         },
       });
       const data = await response.json();
-
       res.status(200).json(data);
     }
   } catch (e) {

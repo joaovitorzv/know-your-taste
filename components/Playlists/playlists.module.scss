@@ -18,6 +18,23 @@
   @include header-text;
 }
 
+.playlists {
+  height: 570px;
+  overflow-y: scroll;
+  padding-right: var(--spacer-s);
+
+  &::-webkit-scrollbar {
+    background-color: rgb(0, 0, 0, 0.05);
+    border-radius: var(--rd-m);
+    width: var(--spacer-s);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-semilight);
+    border-radius: var(--rd-m);
+  }
+}
+
 .load {
   text-align: center;
   margin-top: var(--spacer-m);

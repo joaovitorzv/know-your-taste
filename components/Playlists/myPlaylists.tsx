@@ -79,7 +79,7 @@ const MyPlaylists = () => {
       {isEmpty ? (
         <p>você não criou nenhuma playlist ainda.</p>
       ) : (
-        <div>
+        <div className={playlists.playlists}>
           {data?.map((page) =>
             page.items.map((playlist) => (
               <Playlist
