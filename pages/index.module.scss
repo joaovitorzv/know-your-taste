@@ -39,6 +39,21 @@
   margin-top: var(--spacer-xl);
   padding: var(--spacer-xl);
   border-radius: var(--rd-m);
+
+  animation-duration: 1s;
+  animation-name: load;
+}
+
+@keyframes load {
+  from {
+    transform: translateY(3em);
+    opacity: 0.2;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .features h2 {
