@@ -10,8 +10,6 @@
     "test:watch": "jest -w --passWithNoTests"
   },
   "dependencies": {
-    "@types/uuid": "^8.3.4",
-    "@upstash/redis": "^0.2.1",
     "next": "12.0.10",
     "next-auth": "^4.2.1",
     "react": "17.0.2",
