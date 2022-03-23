@@ -10,8 +10,26 @@
   text-align: center;
 }
 
+.container ul {
+  list-style-type: none;
+}
+
 .container ul li {
   display: inline;
 
   margin: 0 var(--spacer-s);
+}
+
+.terms {
+  text-align: start;
+
+  h5 {
+    text-transform: uppercase;
+    font-size: var(--font-paragraph-s-size);
+    margin-bottom: var(--spacer-m);
+  }
+
+  p {
+    margin-bottom: var(--spacer-s);
+  }
 }

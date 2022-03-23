@@ -12,7 +12,7 @@ interface ListItemSkeletonWrapperProps {
 
 const ListItemSkeleton = ({ count }: ListItemSkeletonWrapperProps) => {
   const listItem = (key: number) => (
-    <li key={key}>
+    <li key={key} className={topItems.listItem}>
       <div className={topItems.artistListContainer}>
         <Skeleton height={50} width={50} />
         <div className={topItems.artistList} style={{ paddingLeft: "10px" }}>
@@ -44,7 +44,7 @@ const TopArtists = () => {
           <ListItemSkeleton count={5} />
         ) : (
           artists.items.map((artist) => (
-            <li key={artist.id}>
+            <li key={artist.id} className={topItems.listItem}>
               <div className={topItems.artistListContainer}>
                 <img src={artist.images[0].url} alt={artist.name} />
                 <div className={topItems.artistList}>
@@ -79,7 +79,7 @@ const TopTracks = () => {
           <ListItemSkeleton count={5} />
         ) : (
           tracks.items.map((track: any) => (
-            <li key={track.name}>
+            <li key={track.name} className={topItems.listItem}>
               <div className={topItems.artistListContainer}>
                 <img src={track.album.images[0].url} alt={track.name} />
                 <div className={topItems.artistList}>

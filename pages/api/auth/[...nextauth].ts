@@ -3,7 +3,7 @@ import NextAuth from "next-auth/next";
 import SpotifyProvider from "next-auth/providers/spotify";
 import { AUTH_ERROR, RefreshTokenResponse } from "../../../types/next-auth.d";
 
-const scopes_param = [
+export const scopes_param = [
   "user-read-email",
   "playlist-read-private",
   "user-top-read",
