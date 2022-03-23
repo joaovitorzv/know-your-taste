@@ -1,7 +1,8 @@
 .btn {
   display: flex;
   align-items: center;
-  background-color: var(--primary-main);
+  border: 3px dotted var(--secondary-semidark);
+  background-color: transparent;
   color: black;
 
   &:hover {

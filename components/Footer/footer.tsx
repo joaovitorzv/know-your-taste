@@ -10,8 +10,6 @@ const Footer = ({ className }: Props) => {
       <ul>
         <li>&copy; {new Date().getFullYear()}</li>
         {"|"}
-        <li>Termos</li>
-        {"|"}
         <li>
           <a
             href="https://github.com/joaovitorzv"

@@ -11,7 +11,7 @@
   background-color: white;
 
   @media only screen and (max-width: $sm) {
-    padding: var(--spacer-xs);
+    padding: var(--spacer-m);
   }
 }
 
@@ -43,7 +43,6 @@
   justify-content: flex-end;
 
   @media only screen and (max-width: $sm) {
-    padding-top: var(--spacer-s);
     justify-content: flex-end;
   }
 }

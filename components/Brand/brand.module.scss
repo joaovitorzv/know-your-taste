@@ -1,23 +1,16 @@
 @import "../../styles/breakpoints";
 
 .container {
-  background: rgb(172, 252, 217);
-  background: radial-gradient(
-    circle,
-    rgba(172, 252, 217, 1) 0%,
-    rgba(172, 252, 217, 0) 100%
-  );
-  padding: var(--spacer-s);
-  border-radius: var(--rd-m);
   display: inline-flex;
 }
 
 .brand {
-  color: black;
-  font-size: var(--font-header-m-size);
-  font-weight: var(--font-header-weight);
+  height: 70px;
+  width: 70px;
 
+  display: block;
   @media only screen and (max-width: $sm) {
-    font-size: var(--font-paragraph-m-size);
+    height: 40px;
+    width: 40px;
   }
 }
