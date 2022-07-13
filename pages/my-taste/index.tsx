@@ -6,14 +6,6 @@ import { useEffect } from "react";
 import { AUTH_ERROR } from "../../types/next-auth.d";
 
 const MyTaste: NextPage = () => {
-  const session = useSession();
-  useEffect(() => {
-    if (session.data?.error === AUTH_ERROR.REFRESH_TOKEN)
-      signIn("spotify", {
-        callbackUrl: `${process.env.APP_BASE_URL}/my-taste`,
-      });
-  }, [session]);
-
   return (
     <>
       <Head>
