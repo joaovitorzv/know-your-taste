@@ -44,6 +44,23 @@ const getKey: SWRInfiniteKeyLoader = (pageIndex, prevData) => {
   return `/api/user/playlists?next=${prevData.next}`;
 };
 
+const MyPlaylistsSkeleton = () => {
+  return (
+    <div className={playlists.container}>
+      <header>
+        <h2>Minhas Playlists</h2>
+      </header>
+      <div>
+        <Skeleton height={90} style={{ marginTop: "1em" }} />
+        <Skeleton height={90} style={{ marginTop: "1em" }} />
+        <Skeleton height={90} style={{ marginTop: "1em" }} />
+        <Skeleton height={90} style={{ marginTop: "1em" }} />
+        <Skeleton height={90} style={{ marginTop: "1em" }} />
+      </div>
+    </div>
+  );
+};
+
 const MyPlaylists = () => {
   const { data, error, setSize, size, mutate } =
     useSWRInfinite<PlaylistsResponse>(getKey);
@@ -52,25 +69,10 @@ const MyPlaylists = () => {
   const isLoadingMore =
     isLoading || (size > 0 && data && typeof data[size - 1] === "undefined");
   const isEmpty = data?.length === 0;
-  const isTheEnd = isEmpty || (data && data[data.length - 1].next === null);
+  const isTheEnd = isEmpty || !!(data && data[data.length - 1].next === null);
 
   if (error) return <p>something bad happened!</p>;
-  if (isLoading)
-    return (
-      <div className={playlists.container}>
-        <header>
-          <h2>Minhas Playlists</h2>
-        </header>
-        <div>
-          <Skeleton height={90} style={{ marginTop: "1em" }} />
-          <Skeleton height={90} style={{ marginTop: "1em" }} />
-          <Skeleton height={90} style={{ marginTop: "1em" }} />
-          <Skeleton height={90} style={{ marginTop: "1em" }} />
-          <Skeleton height={90} style={{ marginTop: "1em" }} />
-        </div>
-      </div>
-    );
-
+  if (isLoading) return <MyPlaylistsSkeleton />;
   return (
     <div className={playlists.container}>
       <header>
@@ -95,17 +97,20 @@ const MyPlaylists = () => {
               />
             ))
           )}
+          <div className={playlists.load}>
+            <Button
+              disabled={isTheEnd}
+              onClick={() => setSize((prev) => prev + 1)}
+            >
+              {isLoadingMore
+                ? "carregando mais..."
+                : isTheEnd
+                ? "nada para carregar"
+                : "mostrar mais"}
+            </Button>
+          </div>
         </div>
       )}
-      <div className={playlists.load}>
-        <Button disabled={isTheEnd} onClick={() => setSize((prev) => prev + 1)}>
-          {isLoadingMore
-            ? "carregando mais..."
-            : isTheEnd
-            ? "nada para carregar"
-            : "mostrar mais"}
-        </Button>
-      </div>
     </div>
   );
 };

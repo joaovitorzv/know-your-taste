@@ -11,9 +11,7 @@ const SigninBtn = ({ params }: Props) => {
   return (
     <div className={btn.signin}>
       {params.callbackError ? (
-        <p>
-          Não foi possivel conectar com sua conta do spotify, tente novamente.
-        </p>
+        <p>Algo deu errado, Não foi possivel conectar sua conta do spotify.</p>
       ) : null}
       <button
         onClick={() =>

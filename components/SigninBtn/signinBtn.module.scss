@@ -1,3 +1,13 @@
+.signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signin p {
+  margin: var(--spacer-m) 0; 
+}
+
 .signin button {
   font-family: var(--font-header-family);
   border: none;
