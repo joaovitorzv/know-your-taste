@@ -56,7 +56,7 @@ export default NextAuth({
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
-        token.expiresAt = Date.now() + 3600 * 1000; // expires in 1 hour
+        token.expiresAt = Date.now() + 3600; // expires in 1 hour
       }
 
       if (Date.now() > token.expiresAt) {
