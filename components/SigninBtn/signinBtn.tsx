@@ -16,7 +16,7 @@ const SigninBtn = ({ params }: Props) => {
       <button
         onClick={() =>
           signIn("spotify", {
-            callbackUrl: `https://know-your-taste.vercel.app/my-taste`,
+            callbackUrl: `https://know-your-taste.vercel.app`,
           })
         }
       >

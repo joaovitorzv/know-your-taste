@@ -9,9 +9,10 @@ const MyTaste: NextPage = () => {
   const session = useSession();
   useEffect(() => {
     if (session.data?.error === AUTH_ERROR.REFRESH_TOKEN)
-      signIn("spotify", {
-        callbackUrl: `${process.env.APP_BASE_URI}/my-taste`,
-      });
+      console.log("error on my-page useEffect");
+    signIn("spotify", {
+      callbackUrl: `${process.env.APP_BASE_URI}/my-taste`,
+    });
   }, [session]);
 
   return (
