@@ -43,7 +43,7 @@ async function refreshToken(token: JWT): Promise<JWT> {
 }
 
 export default NextAuth({
-  secret: "anythingsecret",
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID as string,
