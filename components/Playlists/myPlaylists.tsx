@@ -69,7 +69,7 @@ const MyPlaylists = () => {
   const isLoadingMore =
     isLoading || (size > 0 && data && typeof data[size - 1] === "undefined");
   const isEmpty = data?.length === 0;
-  const isTheEnd = isEmpty || !!(data && data[data.length - 1].next === null);
+  const isTheEnd = isEmpty || (data && data[data.length - 1].next === null);
 
   if (error) return <p>something bad happened!</p>;
   if (isLoading) return <MyPlaylistsSkeleton />;

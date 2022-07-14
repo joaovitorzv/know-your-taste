@@ -19,6 +19,7 @@ const MyTaste: NextPage = () => {
       <Head>
         <title>My Taste</title>
       </Head>
+      <Layout />
     </>
   );
 };
